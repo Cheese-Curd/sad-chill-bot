@@ -19,7 +19,7 @@ const mony = {
 }
 const version = '1.0.5'
 const token = process.env.token
-const cmdsnmb = 16;
+const cmdsnmb = 14;
 const cmds = new Discord.MessageEmbed()
 	.setAuthor('Version ' + version)
 	.setTitle('Commands')
@@ -36,9 +36,7 @@ const cmds = new Discord.MessageEmbed()
 	.addField('$die', '*Kill* The Bot?', true)
 	.addField('$kick', '[RESRICTED TO BAN/KICK RIGHTS] Kicks A Member.', true)
 	.addField('$ban', '[RESRICTED TO BAN/KICK RIGHTS] Bans A Member.', true)
-	.addField('$say-the-n-word', `THAT'S RACIST!`, true)
 	.addField('$killem', 'Fixed Bug Where Everyone Died IRL', true)
-	.addField('$orangeyt', 'Good Luck Soldier.', true)
 	.addField('$invite', 'Invite the bot.', true)
 	.addField('$info', 'Sends Server and Bot Info.', true)
 	.setFooter('By: Cheese Curd | Trey');
@@ -158,10 +156,6 @@ bot.on('message', message => {
 	switch (args[0]) {
 		case 'invite':
 			message.channel.send(invite)
-			break;
-		case 'orangeyt':
-			message.channel.send('Good Luck Soldier')
-			message.channel.send('||https://pornhub.com||')
 			break;
 		case 'die':
 			message.channel.send('$killme')
@@ -299,9 +293,6 @@ bot.on('message', message => {
 			} else {
 				message.channel.send('You Do Not Have Permission.')
 			}
-			break;
-		case 'say-the-n-word':
-			message.reply('fuck no thats racist you ni- wait thats racist what does that mean im a fucking robot shet')
 			break;
 	}
 });

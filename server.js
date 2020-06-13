@@ -17,7 +17,7 @@ const deadppimg = {
 const mony = {
 	files: ['https://cdn.discordapp.com/attachments/600730403103309845/720471916842057739/alien-holding-dollar-sign-illustration-vector-on-white-backgro-209842786.png']
 }
-const version = '1.0.5'
+const version = 'BETA 1.0.6'
 const token = process.env.token
 const cmdsnmb = 14;
 const cmds = new Discord.MessageEmbed()

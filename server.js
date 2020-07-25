@@ -160,6 +160,9 @@ bot.on('message', message => {
 		case 'die':
 			message.channel.send('$killme')
 			break;
+		case 'test':
+			message.channel.send('this is a test command!')
+			break;
 		case 'info':
 			if (message.channel instanceof Discord.DMChannel) { //do not execute
 			} else {

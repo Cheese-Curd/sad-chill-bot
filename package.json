@@ -1,0 +1,14 @@
+{
+  "name": "sad-chill-bot",
+  "version": "1.0.0",
+  "description": "The Sad Chill Bot For \"The History At 4AM\" Discord Server",
+  "main": "server.js",
+  "scripts": {
+    "offline": "node set-offline.js"
+  },
+  "author": "Cheese Curd | Trey",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
+}

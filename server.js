@@ -56,10 +56,10 @@ const invite = new Discord.MessageEmbed()
 // Startup Commands / Status Updater
 
 const activities_list = [
-	"for $help", 
-	"for $help",
-	"for $help",
-	"for $help.",
+	"for $cmds", 
+	"for $cmds",
+	"for $cmds",
+	"for $cmds.",
 	"Paint Dry.",
 	"Paint Dry.",
     "for bugs.", 

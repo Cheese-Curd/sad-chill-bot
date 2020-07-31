@@ -17,9 +17,9 @@ const deadppimg = {
 const mony = {
 	files: ['https://cdn.discordapp.com/attachments/600730403103309845/720471916842057739/alien-holding-dollar-sign-illustration-vector-on-white-backgro-209842786.png']
 }
-const version = 'BETA 1.0.6'
+const version = 'BETA 1.0.8'
 const token = config.token
-const cmdsnmb = 14;
+const cmdsnmb = 15;
 const cmds = new Discord.MessageEmbed()
 	.setAuthor('Version ' + version)
 	.setTitle('Commands')
@@ -39,6 +39,7 @@ const cmds = new Discord.MessageEmbed()
 	.addField('$killem', 'Fixed Bug Where Everyone Died IRL', true)
 	.addField('$invite', 'Invite the bot.', true)
 	.addField('$info', 'Sends Server and Bot Info.', true)
+	.addField(`$music`, `Plays music ;)`, true)
 	.setFooter('By: Cheese Curd | Trey');
 
 const invite = new Discord.MessageEmbed()
@@ -53,16 +54,43 @@ const invite = new Discord.MessageEmbed()
 
 
 // Startup Commands / Status Updater
+
+const activities_list = [
+	"for $help", 
+	"for $help",
+	"for $help",
+	"for $help.",
+	"Paint Dry.",
+	"Paint Dry.",
+    "for bugs.", 
+	"bee's.",
+	"bee's."
+    ]; // creates an arraylist containing phrases you want your bot to switch through.
+
 bot.on('ready', () => {
-	bot.user.setActivity('Paint Dry', {
-		type: 'WATCHING'
-	})
-	console.log('BOT UPDATED')
+	console.log(`BOT STARTED | UPDATED`)
+	setInterval(() => {
+		const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
+		bot.user.setActivity(activities_list[index], {
+			type: 'WATCHING'
+		}) // sets bot's activities to one of the phrases in the arraylist.
+		console.log('UPDATED BOT STATUS')
+	}, 10000); // Runs this every 10 seconds.
 });
+
+// bot.on('ready', () => {
+// 	bot.user.setActivity('Paint Dry', {
+// 		type: 'WATCHING'
+// 	})
+// 	console.log('UPDATED BOT STATUS')
+// 	console.log('BOT STARTING')
+// 	console.log(`BOT STARTED | UPDATED`)
+// });
 
 // creeper secret command By: Cheese Curd | Trey
 bot.on('message', (message) => {
 	if (message.content == 'creeper') {
+		console.log('Creeper Secret Command activiated.')
 		message.channel.send('Aw Man!');
 		message.channel.send('So we back in the mine');
 		message.channel.send('Got our pickaxe swinging from side to side');
@@ -140,6 +168,7 @@ bot.on('message', (message) => {
 // Money secret command
 bot.on('message', (message) => {
 	if (message.content == '$') {
+		console.log('Money Secret Command activiated.')
 		message.channel.send('what the fuck is that', mony);
 	}
 });
@@ -147,23 +176,32 @@ bot.on('message', (message) => {
 
 // Commands and Command Setup
 bot.on('message', message => {
-	// Make sure you have to start with the prefix at the time writing its '!'
+	// Make sure you have to start with the prefix at the time writing its '$'
 	if (!message.content.startsWith(prefix))
 		return;
-	// idk what this does tbh
+	// idk what this does tbh please tell me ._.
 	let args = message.content.slice(prefix.length).split(' ');
+	console.log('Command Service Started.')
 	// Commands!!!!
 	switch (args[0]) {
 		case 'invite':
+			console.log(`Invite Command Activated.`)
 			message.channel.send(invite)
 			break;
 		case 'die':
+			console.log(`Die Command Activated.`)
 			message.channel.send('$killme')
 			break;
+		case 'music':
+			console.log(`Music Command Activated.`)
+			message.channel.send(`no :3`)
+			break;
 		case 'test':
+			console.log(`Test Command Activated.`)
 			message.channel.send('this is a test command!')
 			break;
 		case 'info':
+			console.log(`Info Command Activated.`)
 			if (message.channel instanceof Discord.DMChannel) { //do not execute
 			} else {
 				const info = new Discord.MessageEmbed()
@@ -180,125 +218,147 @@ bot.on('message', message => {
 					.setColor(0xFF0000)
 					.addField('Bot Name', bot.user.username, true)
 					.addField('Commands', cmdsnmb, true)
-					.addField('Servers In', bot.guilds)
+					.addField('Servers In', bot.guilds) //<<< is broken please fix!!
 					.setFooter('By: Cheese Curd | Trey');
 				message.channel.send(info)
 				message.channel.send(info2)
 			}
 			break;
 		case 'killme':
+			console.log(`Killme Command Activated.`)
 			// message.channel.send(botstate)
 			message.channel.send(deadppimg)
 			message.reply('died oh god what are we going to do uhhhhhhhhhhhh UMM WHAT DO WE DO @everyone?')
 			break;
 		case 'killem':
+			console.log(`Killem Command Activated.`)
 			// message.channel.send(botstate)
 			message.channel.send(deadppimg)
 			message.channel.send('@everyone, died oh god what are we going to do uhhhhhhhhhhhh UMM WHAT DO WE DO?')
 			break;
 		case 'cbt':
+			console.log(`CBT Command Activated.`)
 			// message.channel.send(botstate)
 			message.channel.send('Cock and ball torture (CBT), penis torture or dick torture is a sexual activity involving application of pain or constriction to the penis or testicles. This may involve directly painful activities, such as genital piercing, wax play, genital spanking, squeezing, ball-busting, genital flogging, urethral play, tickle torture, erotic electrostimulation or even kicking. The recipient of such activities may receive direct physical pleasure via masochism, or emotional pleasure through erotic humiliation, or knowledge that the play is pleasing to a sadistic dominant. Many of these practices carry significant health risks.')
 			break;
 		case 'cmds':
+			console.log(`CMDS Command Activated.`)
 			// message.channel.send(botstate)
-
 			message.author.send(cmds)
 			break;
 		case 'ercodes':
+			console.log(`ercodes Command Activated.`)
 			// message.channel.send(botstate)
 			message.channel.send('Error Code #0 : NO SUCH VAR / CONST WITH SAME NAME')
 			break;
 		case 'whatiswikipedia':
+			console.log(`What is wikipedia Command Activated.`)
 			// message.channel.send(botstate)
 			message.channel.send('Wikipedia, the free online encyclopedia that ANYONE can edit! Wikipedias are places where people work together to write encyclopedias in different languages. We use Simple English words and grammar here. The Simple English Wikipedia is for everyone! That includes children and adults who are learning English. There are 164,324 articles on the Simple English Wikipedia. All of the pages are free to use. They have all been published under both the Creative Commons Attribution/Share-Alike License 3.0 and the GNU Free Documentation License. You can help here! You may change these pages and make new pages. Read the help pages and other good pages to learn how to write pages here. If you need help, you may ask questions at Simple talk.')
 			break;
 		case 'hlvr':
 			// message.channel.send(botstate)
+			console.log(`hlvr Command Activated.`)
 			message.channel.send('https://www.youtube.com/playlist?list=PLglTodSj6fQGbLTtPF_YXVJ6TKSaC3O02')
 			break;
 		case 'watermelon':
 			// message.channel.send(botstate)
-			message.channel.send('**w   a   t   e   r   m   e   l   o   n**', watermelonimg)
+			console.log(`Watermelon Command Activated.`)
+			message.channel.send(':watermelon: **w   a   t   e   r   m   e   l   o   n** :watermelon:', watermelonimg)
 			break;
 		case 'rtd':
 			// message.channel.send(botstate)
 			number = 6;
 			number2 = Math.floor(Math.random() * (number - 1 + 1)) + 1;
 			message.channel.send(number2)
+			console.log('RTD Number Selected is ' + number2)
 			break;
 		case 'fac':
 			// message.channel.send(botstate)
-			number = 2;
-			number2 = Math.floor(Math.random() * (number - 1 + 1)) + 1;
-			if (number2 == '2') {
+			number4 = 2;
+			number3 = Math.floor(Math.random() * (number4 - 1 + 1)) + 1;
+			if (number3 == '2') {
+				console.log(`FAC Result is Head`)
 				message.channel.send('Heads');
 			} else {
+				console.log(`FAC Result is Tails`)
 				message.channel.send('Tails');
 			}
 			break;
 		case 'kick':
 			if (message.member.roles.cache.find(r => r.name === "Kick/Ban Rights")) {
-				// Ignore messages that aren't from a guild
+				// Ignore messages that aren't from a guild \\
 				if (!message.guild) return;
-				// Assuming we mention someone in the message, this will return the user
+				// Assuming we mention someone in the message, this will return the user \\
 				const user = message.mentions.users.first();
 				const member = message.guild.member(user);
-				// If we have a user mentioned
+				// If we have a user mentioned \\
 				if (user) {
 					if (member) {
 						member
 							.kick('Kicked By: Sad Chill Bot')
 							.then(() => {
 								message.reply(`Successfully kicked ${user.tag}`);
+								console.log(`Kicked ${user.tag}`)
 							})
 							.catch(err => {
+								console.log(`Bot unable to kick member reason \/`)
 								message.reply('I was unable to kick the member');
 								console.error(err);
 							});
 					} else {
 						message.reply("That user isn't in this Server!");
+						console.log(`User not in Server.`)
 					}
 				} else {
 					message.reply("You didn't mention the user to kick!");
+					console.log(`User didn't mention user to kick.`)
 				}
 				break;
 			} else {
 				message.channel.send('You Do Not Have Permission.')
+				console.log(`User Doesn't have Permission to kick.`)
 			}
 			break;
 		case 'ban':
 			if (message.member.roles.cache.find(r => r.name === "Kick/Ban Rights")) {
-				// Ignore messages that aren't from a guild
+				// Ignore messages that aren't from a guild \\
 				if (!message.guild) return;
-				// Assuming we mention someone in the message, this will return the user
+				// Assuming we mention someone in the message, this will return the user \\
 				const user2 = message.mentions.users.first();
 				const member2 = message.guild.member(user2);
-				// If we have a user mentioned
+				// If we have a user mentioned \\
 				if (user2) {
 					if (member2) {
 						member2
 							.ban('Banned By: Sad Chill Bot')
 							.then(() => {
 								message.reply(`Successfully banned ${user2.tag}`);
+								console.log(`Banned ${user2.tag}`)
 							})
 							.catch(err => {
 								message.reply('I was unable to ban the member');
+								console.log(`Bot unable to ban member reason \/`)
 								console.error(err);
 							});
 					} else {
 						message.reply("That user isn't in this Server!");
+						console.log(`User not in Server.`)
 					}
 				} else {
 					message.reply("You didn't mention the user to ban!");
+					console.log(`User didn't mention user to ban.`)
 				}
 				break;
 			} else {
 				message.channel.send('You Do Not Have Permission.')
+				console.log(`User Doesn't have Permission to ban.`)
 			}
 			break;
 	}
 });
-// End
+// End \\
 
+// Login \\
 bot.login(token);
+console.log(`Bot Logged in`)

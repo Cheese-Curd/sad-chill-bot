@@ -1,4 +1,36 @@
 {
     "prefix": "$",
-    "token": "" // Put Token Right here :) \\
+    "token": "yeah I ain't givin' ya my token",
+    "whitelist":
+    [
+    "Owner/You",
+    "Co-Owner",
+    "Friend",
+    "Friend",
+    "Friend"
+    ],
+    "swears":
+    [
+      "fuck",
+      "fuc",
+      "fuk",
+      "f u c k",
+      "f u k",
+      "ass",
+      "@$$",
+      "asshole",
+      "ahole",
+      "bich",
+      "bitc",
+      "bitch",
+      "shit",
+      "dammit",
+      "damit",
+      "damn",
+      "damm",
+      "cock",
+      "cox",
+      "pusy",
+      "pussy"
+    ]
 }

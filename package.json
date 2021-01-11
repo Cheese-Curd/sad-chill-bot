@@ -4,11 +4,12 @@
   "description": "The Sad Chill Bot For \"The History At 4AM\" Discord Server",
   "main": "server.js",
   "scripts": {
-    "offline": "node set-offline.js"
+    "offline": "echo No file found"
   },
   "author": "Cheese Curd | Trey",
   "license": "ISC",
   "dependencies": {
+    "ascii-table": "0.0.9",
     "discord.js": "^12.2.0"
   }
 }

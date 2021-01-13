@@ -10,7 +10,7 @@ const {
 const bot = new Client();
 const prefix = config.prefix
 const botstate = '**WARNING** Bot unfinished Some things may not work!'
-const version = '1.1.3 B'
+const version = '1.1.5 B'
 const token = config.token
 const cmdsnmb = 15;
 const whitelist = config.whitelist
@@ -61,8 +61,13 @@ let activities_list = [
 	"🇾🇴🇺....",
 	"🇻🇪🇽🇮 🇸🇱🇪🇪🇵🇮🇳🇬... : )",
 	"Trey sleeping 🥺",
-	"Trey getting depressed :/"
+	"Trey being happy for once"
 ] // creates an arraylist containing phrases you want your bot to switch through.
+
+// let activities_list = [
+// 	"Trey being depressed",
+// 	"Trey being depressed"
+// ]
 
 // let activities_list = [
 // 	"for $cmds",
@@ -168,6 +173,12 @@ bot.on('message', (message) => {
 			message.channel.send(`just saying, you mom looked really nice in bed last night`)
 		} else {
 			return;
+		}
+	} else if (lwrmsg == `hello child`) {
+		if (message.author.id == "425380284192653315") {
+			message.channel.send(`hello father`)
+		} else {
+			message.channel.send(`hello human`)
 		}
 	}
 });
@@ -280,6 +291,15 @@ bot.on('message', message => {
 				} else {
 					message.channel.send(`I ain't gay mate`)
 				}
+				break;
+			case `csmusiclist`:
+				message.channel.send(`https://www.youtube.com/watch?v=UXcN7gLaI20&list=PLFZMDN6KfQNjrnvaoD28e4D_8tkJWAZXl`)
+				break;
+			case `musiclist`:
+				message.channel.send(`__***WARNING THIS HAS SOME NOT KID FRIENDLY MUSIC WATCH AT YOUR OWN RISK***__\n\n||https://www.youtube.com/watch?v=LxyDknaCpq8&list=PLFZMDN6KfQNiUgPQzgfFZML1eI8qenVwQ||`)
+				break;
+			case `whois`:
+				bot.commands.get(`whois`).execute(message, args)
 				break;
 			default:
 				message.channel.send(`what tf does that do lmao`);

@@ -31,6 +31,9 @@ module.exports= {
 			.addField(`$spilledmilk`, `haha milk go brrrrrrrrrrrrrrrrrrrrrr`, true)
 			.addField(`$scare`, `scares someone you ping ;3`, true)
 			.addField(`$dm`, `DMs a user you ping`, true)
+			.addField(`$whois`, `Get some info on someone you ping (not their IP you onion)`, true)
+			.addField(`$musiclist`, `Trey's fav music`, true)
+			.addField(`$csmusiclist`, `Child Safe Version of the $musiclist command`, true)
 			.setFooter('By: Cheese Curd | Trey');
 		console.log(`CMDS Command Activated.`)	
 		// message.channel.send(botstate)

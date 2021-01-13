@@ -3,6 +3,6 @@ module.exports = {
     "description": "music",
     execute(message, args) {
         console.log(`Music Command Activated.`)
-        message.channel.send(`no :3`)
+        message.channel.send(`**[An error has appeared!]**\n**Reason:** \`$music\` is being worked on.`)
     }
 }

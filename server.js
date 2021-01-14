@@ -61,7 +61,8 @@ let activities_list = [
 	"🇾🇴🇺....",
 	"🇻🇪🇽🇮 🇸🇱🇪🇪🇵🇮🇳🇬... : )",
 	"Trey sleeping 🥺",
-	"Trey being happy for once"
+	"Trey being happy for once",
+	"Trey be a furry lol"
 ] // creates an arraylist containing phrases you want your bot to switch through.
 
 // let activities_list = [

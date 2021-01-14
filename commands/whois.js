@@ -44,6 +44,34 @@ module.exports = {
                             .setTimestamp()
                             .setFooter('By: Cheese Curd | Trey');
                         message.channel.send(whois)
+                    } else if (dmusr.username.toLowerCase().search(/\bbot\b/) >= 0) {
+                        if (dmusr.bot == true) {
+                            const whois = new Discord.MessageEmbed()
+                                .setAuthor('Version ' + version)
+                                .setTitle('WhoIs')
+                                .setColor(0x1FFF00)
+                                .setDescription('Who are they?')
+                                .addField(`Username:`, dmusr.username)
+                                .addField(`Bot?`, bottag)
+                                .addField(`Discriminator:`, dmusr.discriminator)
+                                .addField(`ID`, dmusr.id)
+                                .setTimestamp()
+                                .setFooter('By: Cheese Curd | Trey');
+                            message.channel.send(whois)
+                        } else {
+                            const whois = new Discord.MessageEmbed()
+                                .setAuthor('Version ' + version)
+                                .setTitle('WhoIs')
+                                .setColor(0x1FFF00)
+                                .setDescription('Who are they?')
+                                .addField(`Username:`, dmusr.username)
+                                .addField(`Bot?`, `uhhhhhhhh, yeahhhhhhhh?????????? noooooooo?????????????`)
+                                .addField(`Discriminator:`, dmusr.discriminator)
+                                .addField(`ID`, dmusr.id)
+                                .setTimestamp()
+                                .setFooter('By: Cheese Curd | Trey');
+                            message.channel.send(whois)
+                        }
                     } else {
                         const whois = new Discord.MessageEmbed()
                             .setAuthor('Version ' + version)

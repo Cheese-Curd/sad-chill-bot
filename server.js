@@ -132,6 +132,17 @@ bot.on('message', (message) => {
 	}
 });
 
+bot.on('message', (message) => {
+	if (message.content.toLowerCase().startsWith(`pp`)) {
+		if (message.channel.id == '787955722579083294') {
+			bot.channels.fetch(`799367995968978954`).then(ch => ch.send(`${message.author} has added to the chain!`));
+		} else {
+			return
+		}
+	}
+})
+
+
 // secret commands By: Cheese Curd | Trey
 
 bot.on('message', (message) => {

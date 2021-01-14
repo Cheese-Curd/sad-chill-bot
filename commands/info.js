@@ -2,7 +2,7 @@ module.exports = {
     "name": "info",
     "description": "info",
     execute(message, args) {
-        const cmdsnmb = "20 :O";
+        const cmdsnmb = "23";
         const Discord = require('discord.js');
         const {
             Client,
@@ -24,7 +24,7 @@ module.exports = {
                 .setColor(0xFF0000)
                 .addField('Bot Name', "Sad Chill Bot", true)
                 .addField('Commands', cmdsnmb, true)
-                .addField('Servers In', '[BROKEN CODE]', true) // bot.guilds.cache.size, true) //<<< is broken please fix!!
+                .addField('Servers In', '[BROKEN CODE]', true) // bot.guilds.cache.size, true) <<< is broken please fix!!
                 .setFooter('By: Cheese Curd | Trey');
             message.channel.send(info)
             message.channel.send(info2)

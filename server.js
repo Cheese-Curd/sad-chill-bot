@@ -243,7 +243,7 @@ bot.on('message', message => {
 					commandusedrecent.add(message.author.id)
 					setTimeout(() => {
 						commandusedrecent.delete(message.author.id)
-					}, 180000);
+					}, 180000); // 3 minutes \\
 				}
 				
 				break;
@@ -255,7 +255,7 @@ bot.on('message', message => {
 					commandusedrecent.add(message.author.id)
 					setTimeout(() => {
 						commandusedrecent.delete(message.author.id)
-					}, 180000);
+					}, 180000); // 3 minutes \\
 				}
 				break;
 			case `cmds`:

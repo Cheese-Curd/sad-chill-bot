@@ -39,6 +39,7 @@ const childproc = process.argv.includes('--childproc');
 
 // Command CONSTS \\
 
+const commandusedrecent = new Set()
 
 // End \\
 
@@ -62,8 +63,8 @@ let activities_list = [
 	"🇻🇪🇽🇮 🇸🇱🇪🇪🇵🇮🇳🇬... : )",
 	"Trey sleeping 🥺",
 	"Trey being happy for once",
-	"Trey be a furry lol"
-] // creates an arraylist containing phrases you want your bot to switch through.
+	"Trey be a furry lol" // how to be bullied 101 \\
+] // creates an arraylist containing phrases you want your bot to switch through. \\
 
 // let activities_list = [
 // 	"Trey being depressed",
@@ -90,11 +91,11 @@ bot.on('ready', () => {
 	console.log(`BOT STARTED | UPDATED`)
 
 	setInterval(() => {
-		const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
+		const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); // generates a random number between 1 and the length of the activities array list. \\
 		bot.user.setActivity(activities_list[index], {
 			type: 'WATCHING'
-		}) // sets bot's activities to one of the phrases in the arraylist.
-	}, 10000); // Runs this every 10 seconds.
+		}) // sets bot's activities to one of the phrases in the arraylist. \\
+	}, 10000); // Runs this every 10 seconds. \\
 });
 
 
@@ -143,11 +144,10 @@ bot.on('message', (message) => {
 })
 
 
-// secret commands By: Cheese Curd | Trey
+// secret commands By: Cheese Curd | Trey \\
 
 bot.on('message', (message) => {
 	const lwrmsg = message.content.toLowerCase()
-	// creeper
 	if (lwrmsg == 'creeper') {
 		bot.commands.get('creeper').execute(message, );
 	} else if (lwrmsg == '$') { // mony
@@ -236,10 +236,27 @@ bot.on('message', message => {
 				bot.commands.get('melon').execute(message, args);
 				break;
 			case `killme`:
-				bot.commands.get('killme').execute(message, args);
+				if (commandusedrecent.has(message.author.id)) {
+					message.reply(`sorry buster, you can't use that command yet I don't want you to mass ping everyone! ~~I hate this job~~`)
+				} else {
+					bot.commands.get('killme').execute(message, args);
+					commandusedrecent.add(message.author.id)
+					setTimeout(() => {
+						commandusedrecent.delete(message.author.id)
+					}, 180000);
+				}
+				
 				break;
 			case `killem`:
-				bot.commands.get('killem').execute(message, args);
+				if (commandusedrecent.has(message.author.id)) {
+					message.reply(`sorry buster, you can't use that command yet I don't want you to mass ping everyone! ~~I hate this job~~`)
+				} else {
+					bot.commands.get('killem').execute(message, args);
+					commandusedrecent.add(message.author.id)
+					setTimeout(() => {
+						commandusedrecent.delete(message.author.id)
+					}, 180000);
+				}
 				break;
 			case `cmds`:
 				bot.commands.get('cmd').execute(message, args);
@@ -314,7 +331,11 @@ bot.on('message', message => {
 				bot.commands.get(`whois`).execute(message, args)
 				break;
 			default:
-				message.channel.send(`what tf does that do lmao`);
+				if (command == ``) {
+					return;
+				} else {
+					message.channel.send(`shut yo mouth, like come on dude did you even bother to do \`$cmds\`? Well? Did you, cause if you did then why did you just send a command that doesn't exist? Did you forget immediately? like come on dude.`);
+				}
 		}
 	} else {
 		return;

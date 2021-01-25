@@ -49,27 +49,27 @@ const commandusedrecent = new Set()
 // 	"Trey Test Me",
 // 	"Trey Break me"
 // ]
-let activities_list = [
-	"for $cmds",
-	"for $cmds",
-	"for $cmds",
-	"for $cmds.",
-	"Paint Dry.",
-	"Paint Dry.",
-	"for bugs.",
-	"bee's.",
-	"bee's.",
-	"🇾🇴🇺....",
-	"🇻🇪🇽🇮 🇸🇱🇪🇪🇵🇮🇳🇬... : )",
-	"Trey sleeping 🥺",
-	"---- ----- ----- --- ----",
-	"Trey be a furry lol" // how to be bullied 101 \\ // UPDATE: 1/16/2021 02:23 I got bullied \\
-] // creates an arraylist containing phrases you want your bot to switch through. \\
-
 // let activities_list = [
-// 	"Trey being depressed",
-// 	"Trey being depressed"
-// ]
+// 	"for $cmds",
+// 	"for $cmds",
+// 	"for $cmds",
+// 	"for $cmds.",
+// 	"Paint Dry.",
+// 	"Paint Dry.",
+// 	"for bugs.",
+// 	"bee's.",
+// 	"bee's.",
+// 	"🇾🇴🇺....",
+// 	"🇻🇪🇽🇮 🇸🇱🇪🇪🇵🇮🇳🇬... : )",
+// 	"Trey sleeping 🥺",
+// 	"---- ----- ----- --- ----",
+// 	"Trey be a furry lol" // how to be bullied 101 \\ // UPDATE: 1/16/2021 02:23 I got bullied \\
+// ] // creates an arraylist containing phrases you want your bot to switch through. \\
+
+let activities_list = [
+	"Trey wanting to die",
+	"Trey wanting to die"
+]
 
 // let activities_list = [
 // 	"for $cmds",
@@ -136,13 +136,24 @@ bot.on('message', (message) => {
 bot.on('message', (message) => {
 	if (message.content.toLowerCase().startsWith(`pp`)) {
 		if (message.channel.id == '787955722579083294') {
-			bot.channels.fetch(`799367995968978954`).then(ch => ch.send(`${message.author} has added to the chain!`));
+			const args = message.content.slice(prefix.length).split(/ +/)
+			var ppnumber = args[1]
+			if (Number.isNaN(+ppnumber)) {
+				bot.channels.fetch(`799367995968978954`).then(ch => ch.send(`${message.author} has broke the the chain!`));
+			} else {
+				bot.channels.fetch(`799367995968978954`).then(ch => ch.send(`${message.author} has added to the chain!`));
+			}
 		} else {
-			return
+			return;
+		}
+	} else {
+		if (message.channel.id == '787955722579083294') {
+			bot.channels.fetch(`799367995968978954`).then(ch => ch.send(`${message.author} has broke the the chain!`));
+		} else {
+			return;
 		}
 	}
 })
-
 
 // secret commands By: Cheese Curd | Trey \\
 
@@ -341,6 +352,7 @@ bot.on('message', message => {
 		return;
 	}
 });
+
 // End \\
 
 // Login \\

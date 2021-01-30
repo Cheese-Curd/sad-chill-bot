@@ -48,28 +48,28 @@ const commandusedrecent = new Set()
 // const activities_list = [ // Only for when going through testing
 // 	"Trey Test Me",
 // 	"Trey Break me"
-// ]
-// let activities_list = [
-// 	"for $cmds",
-// 	"for $cmds",
-// 	"for $cmds",
-// 	"for $cmds.",
-// 	"Paint Dry.",
-// 	"Paint Dry.",
-// 	"for bugs.",
-// 	"bee's.",
-// 	"bee's.",
-// 	"🇾🇴🇺....",
-// 	"🇻🇪🇽🇮 🇸🇱🇪🇪🇵🇮🇳🇬... : )",
-// 	"Trey sleeping 🥺",
-// 	"---- ----- ----- --- ----",
-// 	"Trey be a furry lol" // how to be bullied 101 \\ // UPDATE: 1/16/2021 02:23 I got bullied \\
-// ] // creates an arraylist containing phrases you want your bot to switch through. \\
-
-let activities_list = [
-	"Trey wanting to die",
-	"Trey wanting to die"
 ]
+let activities_list = [
+	"for $cmds",
+	"for $cmds",
+	"for $cmds",
+	"for $cmds.",
+	"Paint Dry.",
+	"Paint Dry.",
+	"for bugs.",
+	"bee's.",
+	"bee's.",
+	"🇾🇴🇺....",
+	"🇻🇪🇽🇮 🇸🇱🇪🇪🇵🇮🇳🇬... : )",
+	"Trey sleeping 🥺",
+	"being happy for once :D",
+	"Trey be a furry lol" // how to be bullied 101 \\ // UPDATE: 1/16/2021 02:23 I got bullied \\
+] // creates an arraylist containing phrases you want your bot to switch through. \\
+
+// let activities_list = [
+// 	"Trey wanting to die",
+// 	"Trey wanting to die"
+// ]
 
 // let activities_list = [
 // 	"for $cmds",

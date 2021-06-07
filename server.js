@@ -7,7 +7,7 @@ const {
 	Client,
 	Attachment
 } = require('discord.js');
-const bot = new Client();
+const bot = new Discord.Client();
 const prefix = config.prefix
 const botstate = '**WARNING** Bot unfinished Some things may not work!'
 const version = '1.1.5 B'
@@ -19,9 +19,9 @@ bot.oocmds = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
-	
+
 	bot.commands.set(command.name, command);
-	
+
 }
 const oocmdsFiles = fs.readdirSync('./commands/owneronly/').filter(file => file.endsWith('.js'));
 for (const file of oocmdsFiles) {
@@ -33,6 +33,7 @@ for (const file of oocmdsFiles) {
 const {
 	spawn
 } = require('child_process');
+const { count } = require('console');
 const childproc = process.argv.includes('--childproc');
 
 // End \\
@@ -43,12 +44,12 @@ const commandusedrecent = new Set()
 
 // End \\
 
-// Startup Commands / Status Updater
+// Startup Commands / Status Updater \\
 
 // const activities_list = [ // Only for when going through testing
 // 	"Trey Test Me",
 // 	"Trey Break me"
-]
+// ]
 let activities_list = [
 	"for $cmds",
 	"for $cmds",
@@ -62,14 +63,9 @@ let activities_list = [
 	"🇾🇴🇺....",
 	"🇻🇪🇽🇮 🇸🇱🇪🇪🇵🇮🇳🇬... : )",
 	"Trey sleeping 🥺",
-	"being happy for once :D",
+	"Trey being sad boi",
 	"Trey be a furry lol" // how to be bullied 101 \\ // UPDATE: 1/16/2021 02:23 I got bullied \\
 ] // creates an arraylist containing phrases you want your bot to switch through. \\
-
-// let activities_list = [
-// 	"Trey wanting to die",
-// 	"Trey wanting to die"
-// ]
 
 // let activities_list = [
 // 	"for $cmds",
@@ -89,7 +85,7 @@ let activities_list = [
 
 bot.on('ready', () => {
 	console.log(`BOT STARTED | UPDATED`)
-
+	//bot.channels.fetch(`778657903052849172`).then(ch => ch.send(`Heya! I have fully booted and ready to go!`));
 	setInterval(() => {
 		const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); // generates a random number between 1 and the length of the activities array list. \\
 		bot.user.setActivity(activities_list[index], {
@@ -107,50 +103,63 @@ bot.on('message', (message) => {
 	if (lwrmsg == '$restart') {
 		if (whitelist.includes(message.author.id)) {
 			message.channel.send('Got it!')
-			function recreate(cmd = process.argv.shift(), args = process.argv)
-		{
-			bot.destroy();
-				
-			if (!args.includes('--childproc'))
-				args.push('--childproc');
-			var cp = spawn(cmd, args, { stdio:"inherit" });
-			cp.on('close', (code) =>
-			{
-				if (code == 1001) // process exited to reset
-					recreate(cmd, args);
-				else
-					process.exit();
-			});
-		}
+			function recreate(cmd = process.argv.shift(), args = process.argv) {
+				bot.destroy();
 
-		if (childproc)
-			setTimeout(() => { process.exit(1001) }, 0);
-		else
-			recreate();
+				if (!args.includes('--childproc'))
+					args.push('--childproc');
+				var cp = spawn(cmd, args, { stdio: "inherit" });
+				cp.on('close', (code) => {
+					if (code == 1001) // process exited to reset
+						recrheate(cmd, args);
+					else
+						process.exit();
+				});
+			}
+
+			if (childproc)
+				setTimeout(() => { process.exit(1001) }, 0);
+			else
+				recreate();
 		} else {
 			message.reply(`Bro, why are you trying to restart a bot you don't own?`)
 		}
 	}
 });
 
+// SCB SERVER ONLY \\
+
+let cnumb = 1
+let nnumb = 2
+let lnumb = 0
+
 bot.on('message', (message) => {
 	if (message.content.toLowerCase().startsWith(`pp`)) {
 		if (message.channel.id == '787955722579083294') {
 			const args = message.content.slice(prefix.length).split(/ +/)
 			var ppnumber = args[1]
-			if (Number.isNaN(+ppnumber)) {
+			// message.channel.send(`lnumb = ${lnumb} / cnumb = ${cnumb} / nnumb = ${nnumb}`);
+			if (ppnumber == lnumb) {
+				lnumb -= 1
+				cnumb -= 1
+				nnumb -= 1
+				bot.channels.fetch(`799367995968978954`).then(ch => ch.send(`${message.author} has lowered the number!`));
+			} else if (ppnumber == cnumb) {
+				lnumb += 1
+				cnumb += 1
+				nnumb += 1
+				bot.channels.fetch(`799367995968978954`).then(ch => ch.send(`${message.author} has added to the chain!`));
+			} else if (ppnumber == NaN) {
+				cnumb = 1
+				nnumb = 2
+				lnumb = 0
 				bot.channels.fetch(`799367995968978954`).then(ch => ch.send(`${message.author} has broke the the chain!`));
 			} else {
-				bot.channels.fetch(`799367995968978954`).then(ch => ch.send(`${message.author} has added to the chain!`));
+				cnumb = 1
+				nnumb = 2
+				lnumb = 0
+				bot.channels.fetch(`799367995968978954`).then(ch => ch.send(`${message.author} has broke the the chain!`));
 			}
-		} else {
-			return;
-		}
-	} else {
-		if (message.channel.id == '787955722579083294') {
-			bot.channels.fetch(`799367995968978954`).then(ch => ch.send(`${message.author} has broke the the chain!`));
-		} else {
-			return;
 		}
 	}
 })
@@ -160,9 +169,7 @@ bot.on('message', (message) => {
 bot.on('message', (message) => {
 	const lwrmsg = message.content.toLowerCase()
 	if (lwrmsg == 'creeper') {
-		bot.commands.get('creeper').execute(message, );
-	} else if (lwrmsg == '$') { // mony
-		bot.commands.get('mony').execute(message);
+		bot.commands.get('creeper').execute(message);
 	} else if (lwrmsg == `i love you <@!719386750266376203>`) { // I love you Sad Chill Bot <3
 		bot.commands.get('love').execute(message);
 	} else if (lwrmsg == `hello, world`) { // Hello, World
@@ -203,18 +210,17 @@ bot.on('message', (message) => {
 		} else {
 			message.channel.send(`hello human`)
 		}
-	}
+	} 
 });
 // End
 
-// bot.on('message', (message) => {
-// 	const lwrmsg = message.content.toLowerCase()
-// 	const args = lwrmsg.slice('good night', 'goodnight', 'gn').split(/ +/);
-// 	if (message.content == args) {
-// 		console.log(args[1])
-// 	}
-// });
-//<@!719386750266376203>, Heh, how hilarious, two poorly coded bots teaming up to make a super poorly coded bot. This is hilarious, I cannot stop laughing.
+//bot.on('message', (message) => {
+//	const lwrmsg = message.content.toLowerCase()
+//	const args = lwrmsg.slice('good night', 'goodnight', 'gn').split(/ +/);
+//	if (message.content == args) {
+//		console.log(args[1])
+//	}
+//}
 
 
 // Command Start \\
@@ -256,7 +262,7 @@ bot.on('message', message => {
 						commandusedrecent.delete(message.author.id)
 					}, 180000); // 3 minutes \\
 				}
-				
+
 				break;
 			case `killem`:
 				if (commandusedrecent.has(message.author.id)) {
@@ -333,19 +339,44 @@ bot.on('message', message => {
 				}
 				break;
 			case `csmusiclist`:
-				message.channel.send(`https://www.youtube.com/watch?v=UXcN7gLaI20&list=PLFZMDN6KfQNjrnvaoD28e4D_8tkJWAZXl`)
+				message.channel.send(`https://music.youtube.com/playlist?list=PLFZMDN6KfQNjrnvaoD28e4D_8tkJWAZXl`)
 				break;
 			case `musiclist`:
-				message.channel.send(`__***WARNING THIS HAS SOME NOT KID FRIENDLY MUSIC WATCH AT YOUR OWN RISK***__\n\n||https://www.youtube.com/watch?v=LxyDknaCpq8&list=PLFZMDN6KfQNiUgPQzgfFZML1eI8qenVwQ||`)
+				message.channel.send(`__***WARNING THIS HAS SOME NOT KID FRIENDLY MUSIC WATCH AT YOUR OWN RISK***__\n\n||https://music.youtube.com/playlist?list=PLFZMDN6KfQNiUgPQzgfFZML1eI8qenVwQ||`)
 				break;
 			case `whois`:
 				bot.commands.get(`whois`).execute(message, args)
 				break;
+			case ``:
+			    bot.commands.get(`mony`).execute(message, args)
+			    break;
+			case `rng`:
+			    bot.commands.get(`rng`).execute(message, args)
+			    break;
+			case `8ball`:
+			    bot.commands.get(`8ball`).execute(message, args)
+			    break;
+			case `action`:
+				bot.commands.get(`action`).execute(message, args)
+				break;
+			case `odm`:
+				bot.oocmds.get(`odm`).execute(message, args)
+				break;
+			case `showme`:
+				bot.commands.get(`showme`).execute(message, args)
+				break;
+			case `gendate`:
+			    bot.commands.get('date').execute(message, args)
+		    break;
+		    case `developer_mode`:
+		        bot.commands.get('devmode').execute(message, args)
+		        break;
 			default:
-				if (command == ``) {
+				if (command == `restart`) {
 					return;
 				} else {
 					message.channel.send(`shut yo mouth, like come on dude did you even bother to do \`$cmds\`? Well? Did you, cause if you did then why did you just send a command that doesn't exist? Did you forget immediately? like come on dude.`);
+                    //message.channel.send(`__**DEBUG**__\n**COMMAND: **${command}`)
 				}
 		}
 	} else {
@@ -358,3 +389,20 @@ bot.on('message', message => {
 // Login \\
 bot.login(token);
 console.log(`Bot Logged in`)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Hello, this is Trey speaking.  I would just like to say that A: thanks for using this and B: I'm probably depressed (suicidal thoughts and I'm pretty sad often) so I'm sorry for not updating this often

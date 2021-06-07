@@ -26,7 +26,7 @@ module.exports= {
 			.addField('$invite', 'Invite the bot.', true)
 			.addField('$info', 'Sends Server and Bot Info.', true)
 			.addField(`$music`, `Plays music ;)`, true)
-			.addField(`$drinklava`, `please don't hurt him`, true)
+			.addField(`$drinklava`, `please don't hurt her`, true)
 			.addField(`$cheesequote`, `says a quote about cheese *(do not press if lactose intolerant may have side effects)*`, true)
 			.addField(`$spilledmilk`, `haha milk go brrrrrrrrrrrrrrrrrrrrrr`, true)
 			.addField(`$scare`, `scares someone you ping ;3`, true)
@@ -34,9 +34,16 @@ module.exports= {
 			.addField(`$whois`, `Get some info on someone you ping (not their IP you onion)`, true)
 			.addField(`$musiclist`, `Trey's fav music`, true)
 			.addField(`$csmusiclist`, `Child Safe Version of the $musiclist command`, true)
-			.setFooter('By: Cheese Curd | Trey');
+			.addField(`$rng <min> <max>`, `Ramdom Number Generator`, true)
+			.addField(`$8ball`, `Magic 8ball :0`, true)
+		const cmds2 = new Discord.MessageEmbed()
+			.setColor(0x1FFF00)
+			.addField(`$action`, `Do an action ($action help for command arguments)`, true)
+			.addField(`$showme`, `Shows you an item`, true)
+			.setFooter('By: Cheese Curd | Trey')
 		console.log(`CMDS Command Activated.`)	
 		// message.channel.send(botstate)
-		message.author.send(cmds)
+		message.author.send(cmds).then(() => message.author.send(cmds2))
+		message.react('✅');
     }
 }

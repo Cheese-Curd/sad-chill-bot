@@ -18,11 +18,11 @@ module.exports = {
                     } else {
                         const toSend = msg.join(" ");
                         console.log(`${message.author.username} sent "${toSend}" to ${dmusr.username}`);
-                        dmusr.send("[USER REQUESTED] " + toSend); // sending the list as a string with spaces seperating the items
+                        dmusr.send("[USER REQUESTED] " + toSend) // sending the list as a string with spaces seperating the items
+                            .catch(() => message.author.send(`I could not send that DM to <@!${dmusr.id}>, this might be because they have DMs off or it was just a random error. Please try again later!`));
                     }
-                    
                 } else {
-                    message.author.reply("That user isn't in this Server! You can't DM them.");
+                    message.author.send("That user isn't in this Server! You can't DM them.");
                     console.log(`DM User not in Server.`);
                 }
             }

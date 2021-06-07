@@ -1,13 +1,14 @@
 {
     "prefix": "$",
-    "token": "yeah I ain't givin' ya my token",
+    "token": "NzE5Mzg2NzUwMjY2Mzc2MjAz.Xt2rHg.lpCGW9urMawwtUyMQ5ZbfOwQJsY",
     "whitelist":
     [
-    "Owner/You",
-    "Co-Owner",
-    "Friend",
-    "Friend",
-    "Friend"
+    "425380284192653315",
+    "176073401184681984",
+    "435590463085608961",
+    "461936148718157825",
+    "733513940658815057",
+    "726661079278682133"
     ],
     "swears":
     [
@@ -32,5 +33,28 @@
       "cox",
       "pusy",
       "pussy"
+    ],
+	"ball":
+    [
+        "As I see it, yes.",
+        "Ask again later.",
+        "Better not tell you now.",
+        "Cannot predict now.",
+        "Don't count on it.",
+        "It is certain.",
+        "It is decidedly so.",
+        "Most likely.",
+        "My reply is no.",
+        "My sources say no.",
+        "Outlook not so good.",
+        "Outlook good.",
+        "Reply hazy, try again.",
+        "Signs point to yes.",
+        "Very doubtiful.",
+        "Without a doubt.",
+        "Yes.",
+        "Yes - definitely.",
+        "You may rely on it.",
+        "Concentrate and ask again."
     ]
 }

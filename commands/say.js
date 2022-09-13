@@ -1,6 +1,6 @@
 module.exports = {
     "name": "say",
-    "description": "Force the bot to say whatever you want her to say [Owner Only]",
+    "description": "Force SCB to say whatever you want her to say [Owner Only]",
     execute(message, args) {
         let msg = args; // making a new variable with the argument list
         const toSend = msg.join(" ");

@@ -4,7 +4,15 @@ module.exports = {
     execute(msg, args) {
         const toSend = args.join(" ");
         const config = require('../config.json')
-        msg.delete();
+        
+        try
+        {
+          msg.delete();
+        } catch(e)
+        {
+          console.error(e);
+        }
+        
         if (args.length < 1) {
             if (config.debug)
               console.debug(`Could not find any arguments for say command.`)

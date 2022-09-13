@@ -38,7 +38,7 @@ const cmdList =
 ]
 const oCmdList =
 [
-	"say"
+    "say"
 ]
 
 bot.on('ready', () =>
@@ -72,9 +72,9 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
                         { name: 'RTD', value: `*${bot.commands.get("rtd").description}*` },
                         { name: 'DM', value: `*${bot.commands.get("wip").description}*` },
                         { name: '8ball', value: `*${bot.commands.get("8ball").description}*` },
-			{ name: 'RNG', value: `*${bot.commands.get("rng").description}*` },
-			{ name: 'CheeseQuote', value: `*${bot.commands.get("cheesequote").description}*` },
-			{ name: 'Say', value: `*${bot.commands.get("say").description}*` }
+                        { name: 'RNG', value: `*${bot.commands.get("rng").description}*` },
+                        { name: 'CheeseQuote', value: `*${bot.commands.get("cheesequote").description}*` },
+                        { name: 'Say', value: `*${bot.commands.get("say").description}*` }
                     )
                     .setTimestamp()
                 msg.reply("Here are the commands!")
@@ -85,14 +85,13 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
                     bot.commands.get(command).execute(msg, args);
 		else if (oCmdList.includes(command) && msg.author.id == "425380284192653315")
 		    bot.commands.get(command).execute(msg, args);
-		    
-                else
-                {
-                    if (config.debug)
-                        console.debug('Unknown Command: ' + command);
-                    msg.channel.send(`Sorry, I don't reconize the command $${command}.`)
-                }
-                break;
+        else
+            {
+                if (config.debug)
+                    console.debug('Unknown Command: ' + command);
+                msg.channel.send(`Sorry, I don't reconize the command $${command}.`)
+            }
+            break;
         }
     }
 });

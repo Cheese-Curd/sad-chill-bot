@@ -36,7 +36,10 @@ const cmdList =
     "rng",
     "cheesequote"
 ]
-
+const oCmdList =
+[
+	"say"
+]
 
 bot.on('ready', () =>
 {
@@ -79,6 +82,9 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
             default:
                 if (cmdList.includes(command))
                     bot.commands.get(command).execute(msg, args);
+		else if (oCmdList.includes(command) && msg.author.id == "425380284192653315")
+		    bot.commands.get(command).execute(msg, args);
+		    
                 else
                 {
                     if (config.debug)

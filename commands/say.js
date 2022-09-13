@@ -4,7 +4,7 @@ module.exports = {
     execute(message, args) {
         let msg = args; // making a new variable with the argument list
         const toSend = msg.join(" ");
-        const config = require('../../config.json')
+        const config = require('../config.json')
         message.delete();
         if (args.length < 1) {
             if (config.debug)

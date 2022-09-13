@@ -59,6 +59,9 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
             case "dm":
                 bot.commands.get("wip").execute(msg, args);
                 break;
+            case "Say":
+                bot.commands.get("wip").execute(msg, args);
+                break;
             case "help": // WHY IS IT STUPID AAAAAAAAA-
                 const help1 = new EmbedBuilder()
                     .setColor(0xff00dd)
@@ -70,7 +73,7 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
                         { name: 'Date', value: `*${bot.commands.get("date").description}*` },
                         { name: 'Flip', value: `*${bot.commands.get("flip").description}*` },
                         { name: 'RTD', value: `*${bot.commands.get("rtd").description}*` },
-                        { name: 'DM', value: `*${bot.commands.get("wip").description}*` },
+                        { name: 'DM', value: `*${bot.commands.get("dm").description}*` },
                         { name: '8ball', value: `*${bot.commands.get("8ball").description}*` },
                         { name: 'RNG', value: `*${bot.commands.get("rng").description}*` },
                         { name: 'CheeseQuote', value: `*${bot.commands.get("cheesequote").description}*` },

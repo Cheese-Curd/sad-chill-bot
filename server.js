@@ -32,7 +32,8 @@ const cmdList =
     "dm",
     "flip",
     "ping",
-    "rtd"
+    "rtd",
+    "rng"
 ]
 
 
@@ -66,7 +67,8 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
                         { name: 'Flip', value: `*${bot.commands.get("flip").description}*` },
                         { name: 'RTD', value: `*${bot.commands.get("rtd").description}*` },
                         { name: 'DM', value: `*${bot.commands.get("wip").description}*` },
-                        { name: '8ball', value: `*${bot.commands.get("8ball").description}*` }
+                        { name: '8ball', value: `*${bot.commands.get("8ball").description}*` },
+			{ name: 'RNG', value: `*${bot.commands.get("rng").description}*` }
                     )
                     .setTimestamp()
                 msg.reply("Here are the commands!")

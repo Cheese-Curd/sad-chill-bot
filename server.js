@@ -73,7 +73,8 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
                         { name: 'DM', value: `*${bot.commands.get("wip").description}*` },
                         { name: '8ball', value: `*${bot.commands.get("8ball").description}*` },
 			{ name: 'RNG', value: `*${bot.commands.get("rng").description}*` },
-			{ name: 'CheeseQuote', value: `*${bot.commands.get("cheesequote").description}*` }
+			{ name: 'CheeseQuote', value: `*${bot.commands.get("cheesequote").description}*` },
+			{ name: 'Say', value: `*${bot.commands.get("say").description}*` }
                     )
                     .setTimestamp()
                 msg.reply("Here are the commands!")

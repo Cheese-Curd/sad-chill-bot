@@ -25,6 +25,16 @@ for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	bot.commands.set(command.name, command);
 }
+const cmdList =
+[
+    "8ball",
+    "date",
+    "dm",
+    "flip",
+    "ping",
+    "rtd"
+]
+
 
 bot.on('ready', () =>
 {
@@ -62,8 +72,15 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
                 msg.reply("Here are the commands!")
                 msg.channel.send({ embeds: [help1] });
                 break;
-            default: 
-                bot.commands.get(command).execute(msg, args)
+            default:
+                if (cmdList.includes(command))
+                    bot.commands.get(command).execute(msg, args);
+                else
+                {
+                    if (config.debug)
+                        console.debug('Unknown Command: ' + command);
+                    msg.channel.send(`Sorry, I don't reconize the command $${command}.`)
+                }
                 break;
         }
     }

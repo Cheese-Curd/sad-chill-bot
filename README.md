@@ -4,7 +4,7 @@
 
 ##### **Old:** *Sad Chill Bot (SCB) is a bot I made for one Discord server, it was originaly supposed to be a joke bot it is now a joke and moderator bot.*
 
-**New:** Sad Chilld Bot (SCB) is a bot that will have multiple **moderation** and **fun** commands. It's in heavy early release, but I will try my hardest to make a great bot. I'm only coding SCB with my spare time, *mostly when I'm bored*.
+**New:** Sad Chill Bot (SCB) is a bot that will have multiple **moderation** and **fun** commands. It's in heavy early release, but I will try my hardest to make a great bot. I'm only coding SCB with my spare time, *mostly when I'm bored*.
 
 
 ## Roadmap

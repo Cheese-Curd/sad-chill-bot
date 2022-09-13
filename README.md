@@ -1,3 +1,0 @@
-# sad-chill-bot
-
-IGNORE THIS THIS IS OLD DO NOT USE 

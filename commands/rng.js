@@ -8,7 +8,7 @@ module.exports = {
         
         if (isNaN(min) || isNaN(max)) {
             if (config.debug)
-                console.debug(`${msg.author} forgot to add min or max, args: ${arg}`)
+                console.debug(`${msg.author.username} forgot to add min or max, args: ${arg}`)
             message.channel.send(`Don't forget the min and or max value!`)
         } else {
             min = Math.ceil(min)

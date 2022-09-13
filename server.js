@@ -59,7 +59,7 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
             case "dm":
                 bot.commands.get("wip").execute(msg, args);
                 break;
-            case "Say":
+            case "say":
                 bot.commands.get("wip").execute(msg, args);
                 break;
             case "help": // WHY IS IT STUPID AAAAAAAAA-

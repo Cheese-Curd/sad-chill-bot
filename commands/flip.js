@@ -1,7 +1,7 @@
 module.exports = {
     "name": "flip",
     "description": "'Hey Google, flip a coin.'",
-    execute(msg, args) {
+    execute(msg, args, config) {
         number4 = 2;
         number3 = Math.floor(Math.random() * (number4 - 1 + 1)) + 1;
         if (number3 == '2') {

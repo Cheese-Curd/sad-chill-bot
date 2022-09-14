@@ -34,7 +34,8 @@ const cmdList =
     "ping",
     "rtd",
     "rng",
-    "cheesequote"
+    "cheesequote",
+    "whois"
 ]
 const oCmdList =
 [
@@ -62,6 +63,9 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
             case "say":
                 bot.commands.get("wip").execute(msg, args);
                 break;
+            case "whois":
+                bot.commands.get("wip").execute(msg, args);
+                break;
             case "help": // WHY IS IT STUPID AAAAAAAAA-
                 const help1 = new EmbedBuilder()
                     .setColor(0xff00dd)
@@ -77,7 +81,8 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
                         { name: '8ball', value: `*${bot.commands.get("8ball").description}*` },
                         { name: 'RNG', value: `*${bot.commands.get("rng").description}*` },
                         { name: 'CheeseQuote', value: `*${bot.commands.get("cheesequote").description}*` },
-                        { name: 'Say', value: `*${bot.commands.get("say").description}*` }
+                        { name: 'Say', value: `*${bot.commands.get("say").description}*` },
+                        { name: 'WhoIs', value: `*${bot.commands.get("whois").description}*` }
                     )
                     .setTimestamp()
                 msg.reply("Here are the commands!")
@@ -85,16 +90,16 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
                 break;
             default:
                 if (cmdList.includes(command))
-                    bot.commands.get(command).execute(msg, args);
-		else if (oCmdList.includes(command) && msg.author.id == "425380284192653315")
-		    bot.commands.get(command).execute(msg, args);
-        else
-            {
-                if (config.debug)
-                    console.debug('Unknown Command: ' + command);
-                msg.channel.send(`Sorry, I don't reconize the command $${command}.`)
-            }
-            break;
+                    bot.commands.get(command).execute(msg, args, config);
+                else if (oCmdList.includes(command) && msg.author.id == "425380284192653315")
+                    bot.commands.get(command).execute(msg, args, config);
+                else
+                    {
+                        if (config.debug)
+                            console.debug('Unknown Command: ' + command);
+                        msg.channel.send(`Sorry, I don't reconize the command $${command}.`)
+                    }
+                break;
         }
     }
 });

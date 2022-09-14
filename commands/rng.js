@@ -1,10 +1,9 @@
 module.exports = {
     "name": "rng",
     "description": "Rnadom number generator `Formated $rng <min> <max>`",
-    execute(message, args) {
+    execute(message, args, config) {
         var max = parseInt(args[1]) // I used var, cry
         var min = parseInt(args[0])
-        var config = require('../config.json')
         
         if (isNaN(min) || isNaN(max)) {
             if (config.debug)

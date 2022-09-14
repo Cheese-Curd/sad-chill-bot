@@ -1,10 +1,9 @@
 module.exports = {
     "name": "say",
     "description": "Force SCB to say whatever you want her to say [Owner Only]",
-    execute(msg, args) {
+    execute(msg, args, config) {
         const toSend = args.join(" ");
-        const config = require('../config.json')
-        
+
         try
         {
           msg.delete();

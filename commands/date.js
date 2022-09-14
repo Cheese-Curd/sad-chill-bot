@@ -1,7 +1,7 @@
 module.exports= {
     "name": "date",
     "description": "Generates a random date.",
-    execute(msg, args){
+    execute(msg, args, config){
         let ddn = 31;
 		
 		// year calculator \\

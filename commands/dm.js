@@ -1,7 +1,7 @@
 module.exports = {
     "name": "dm",
     "description": "Direct message someone as the bot!",
-    execute(msg, args) {
+    execute(msg, args, config) {
         const dmusr = msg.mentions.users.first();
         if (!msg.guild) {
             msg.author.send(`bro you're not in a server lmao`)

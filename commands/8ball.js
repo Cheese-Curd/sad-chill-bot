@@ -1,8 +1,7 @@
 module.exports = {
     "name": "8ball",
-    "description": "What will the magical 8ball say? ",
-    execute(msg, args) {
-        const config = require("../config.json")
+    "description": "What will the magical 8ball say?",
+    execute(msg, args, config) {
         const quotes = config.ball
         
         if (config.debug)

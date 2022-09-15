@@ -58,19 +58,19 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 
 		switch (command)
 		{
-			case "dm":
+		case "dm":
 			bot.commands.get("wip").execute(msg, args);
 			break;
-			case "say":
+		case "say":
 			bot.commands.get("wip").execute(msg, args);
 			break;
-			case "whois":
+		case "whois":
 			bot.commands.get("wip").execute(msg, args);
 			break;
-			case "reset":
+		case "reset":
 			if (msg.author.id == "425380284192653315")
-			bot.commands.get("reset").execute(msg, args, bot)
-			case "help": // WHY IS IT STUPID AAAAAAAAA-
+				bot.commands.get("reset").execute(msg, args, bot)
+		case "help": // WHY IS IT STUPID AAAAAAAAA-
 			const help1 = new EmbedBuilder()
 			.setColor(0xff00dd)
 			.setTitle('Commands')
@@ -93,16 +93,16 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 			msg.reply("Here are the commands!")
 			msg.channel.send({ embeds: [help1] });
 			break;
-			default:
+		default:
 			if (cmdList.includes(command))
-			bot.commands.get(command).execute(msg, args, config);
+				bot.commands.get(command).execute(msg, args, config);
 			else if (oCmdList.includes(command) && msg.author.id == "425380284192653315")
-			bot.commands.get(command).execute(msg, args, config);
+				bot.commands.get(command).execute(msg, args, config);
 			else
 			{
-			if (config.debug)
-			console.debug('Unknown Command: ' + command);
-			msg.channel.send(`Sorry, I don't reconize the command $${command}.`)
+				if (config.debug)
+					console.debug('Unknown Command: ' + command);
+				msg.channel.send(`Sorry, I don't reconize the command $${command}.`)
 			}
 			break;
 		}

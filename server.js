@@ -39,7 +39,8 @@ const cmdList =
 ]
 const oCmdList =
 [
-    "say"
+    "say",
+    "reset"
 ]
 
 bot.on('ready', () =>
@@ -108,6 +109,8 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 if (config.debug) // Funky debug shid
 {
     console.warn("DEBUG MODE IS ON!")
+	console.debug(`Commands: ${cmdList}`);
+	console.debug(`Owner Commands: ${oCmdList}`)
     console.debug(`Token: ${token}`); // Token in console
 }
 

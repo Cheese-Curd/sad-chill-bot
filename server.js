@@ -67,6 +67,9 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
             case "whois":
                 bot.commands.get("wip").execute(msg, args);
                 break;
+	    case "reset":
+		if (msg.author.id == "425380284192653315")
+			bot.commands.get("reset").execute(msg, args, bot)
             case "help": // WHY IS IT STUPID AAAAAAAAA-
                 const help1 = new EmbedBuilder()
                     .setColor(0xff00dd)

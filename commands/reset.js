@@ -1,9 +1,15 @@
 module.exports = {
     "name": "reset",
     "description": "Reset SCB. [Owner Only]",
-    execute(message, args, config, bot) {
+    execute(msg, args, config, bot) {
         // Made by Angel Bot \\
-        message.channel.send('Got it!')
+        const {
+          spawn
+        } = require('child_process');
+        const { count } = require('console');
+        const childproc = process.argv.includes('--childproc');
+        
+        msg.channel.send('Got it!')
         function recreate(cmd = process.argv.shift(), args = process.argv) {
           bot.destroy();
 
@@ -12,7 +18,7 @@ module.exports = {
           var cp = spawn(cmd, args, { stdio: "inherit" });
           cp.on('close', (code) => {
             if (code == 1001) // process exited to reset
-              recrheate(cmd, args);
+              recreate(cmd, args);
             else
               process.exit();
           });
@@ -22,9 +28,5 @@ module.exports = {
           setTimeout(() => { process.exit(1001) }, 0);
         else
           recreate();
-        } else {
-          message.reply(`Bro, why are you trying to restart a bot you don't own?`)
-        }
-      }
     }
 }

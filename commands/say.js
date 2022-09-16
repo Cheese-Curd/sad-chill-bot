@@ -17,6 +17,8 @@ module.exports = {
               console.debug(`Could not find any arguments for say command.`)
             msg.author.send("Make sure to add text before you send that command!")
         } else {
+          if (config.debug)
+              console.debug(`Said: "${toSend}"`)
           msg.channel.send(toSend);
         }
     }

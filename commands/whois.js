@@ -1,7 +1,7 @@
 module.exports = {
     "name": "whois",
     "description": "Grab some data about someone, such as their ID or Discriminator (the numbers after the #)",
-    execute(msg, args, config) {
+    execute(msg, args, config, bot, embedSystem) {
         const dmusr = msg.mentions.users.first();
         const EmbedBuilder = require('discord.js');
         if (!msg.guild) {

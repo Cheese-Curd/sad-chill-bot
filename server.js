@@ -35,7 +35,8 @@ const cmdList =
 	"rtd",
 	"rng",
 	"cheesequote",
-	"whois"
+	"whois",
+	"info"
 ]
 const oCmdList =
 [
@@ -57,47 +58,55 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 		const command = args.shift().toLowerCase(); 
 
 		switch (command)
-		{
+		{ // mostly just WIP exceptions.
 		case "dm":
 			bot.commands.get("wip").execute(msg, args);
 			break;
-		case "say":
-			bot.commands.get("wip").execute(msg, args);
+		case "info":
+			bot.commands.get("wip").execute(msg, args, config);
 			break;
 		case "whois":
 			bot.commands.get("wip").execute(msg, args);
 			break;
 		case "reset":
 			if (msg.author.id == "425380284192653315")
-				bot.commands.get("reset").execute(msg, args, bot)
+				bot.commands.get("wip").execute(msg, args, bot)
 		case "help": // WHY IS IT STUPID AAAAAAAAA-
 			const help1 = new EmbedBuilder()
-			.setColor(0xff00dd)
-			.setTitle('Commands')
-			.setAuthor({ name: 'Eliana', iconURL: 'https://cdn.discordapp.com/attachments/726665166195916831/1017608834497388574/PFP.png', url: 'https://cheese-curd.github.io' }) // me =)
-			.addFields(
-				{ name: 'Ping', value: `*${bot.commands.get("ping").description}*` },
-				{ name: 'Help', value: `*Gives a list of commands.*` },
-				{ name: 'Date', value: `*${bot.commands.get("date").description}*` },
-				{ name: 'Flip', value: `*${bot.commands.get("flip").description}*` },
-				{ name: 'RTD', value: `*${bot.commands.get("rtd").description}*` },
-				{ name: 'DM', value: `*${bot.commands.get("dm").description}*` },
-				{ name: '8ball', value: `*${bot.commands.get("8ball").description}*` },
-				{ name: 'RNG', value: `*${bot.commands.get("rng").description}*` },
-				{ name: 'CheeseQuote', value: `*${bot.commands.get("cheesequote").description}*` },
-				{ name: 'Say', value: `*${bot.commands.get("say").description}*` },
-				{ name: 'WhoIs', value: `*${bot.commands.get("whois").description}*` },
-				{ name: 'Reset', value: `*${bot.commands.get("reset").description}*` }
-			)
-			.setTimestamp()
-			msg.reply("Here are the commands!")
-			msg.channel.send({ embeds: [help1] });
+				.setColor(0xff00dd)
+				.setTitle('Commands')
+				.setAuthor({ name: 'Eliana', iconURL: 'https://cdn.discordapp.com/attachments/726665166195916831/1017608834497388574/PFP.png', url: 'https://cheese-curd.github.io' }) // me =)
+				.addFields(
+					{ name: 'Ping', value: `*${bot.commands.get("ping").description}*` },
+					{ name: 'Help', value: `*Gives a list of commands.*` },
+					{ name: 'Date', value: `*${bot.commands.get("date").description}*` },
+					{ name: 'Flip', value: `*${bot.commands.get("flip").description}*` },
+					{ name: 'RTD', value: `*${bot.commands.get("rtd").description}*` },
+					{ name: 'DM', value: `*${bot.commands.get("dm").description}*` },
+					{ name: '8ball', value: `*${bot.commands.get("8ball").description}*` },
+					{ name: 'RNG', value: `*${bot.commands.get("rng").description}*` },
+					{ name: 'CheeseQuote', value: `*${bot.commands.get("cheesequote").description}*` },
+					{ name: 'Say', value: `*${bot.commands.get("say").description}*` },
+					{ name: 'WhoIs', value: `*${bot.commands.get("whois").description}*` },
+					{ name: 'Reset', value: `*${bot.commands.get("reset").description}*` },
+					{ name: 'Info', value: `*${bot.commands.get("info").description}*` }
+				)
+				.setTimestamp()
+			msg.reply({content: "Here are the commands!", embeds: [help1] });
 			break;
 		default:
 			if (cmdList.includes(command))
-				bot.commands.get(command).execute(msg, args, config);
+			{
+				if (config.debug)
+						console.debug(msg.author.username + ' Triggerd Command ' + command);
+				bot.commands.get(command).execute(msg, args, config, Client, EmbedBuilder);
+			}
 			else if (oCmdList.includes(command) && msg.author.id == "425380284192653315")
-				bot.commands.get(command).execute(msg, args, config);
+			{
+				if (config.debug)
+						console.debug(msg.author.username + ' Triggerd Command ' + command);
+				bot.commands.get(command).execute(msg, args, config, Client, EmbedBuilder);
+			}
 			else
 			{
 				if (config.debug)

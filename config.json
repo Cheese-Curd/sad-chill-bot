@@ -24,5 +24,23 @@
         "Yes - definitely.",
         "You may rely on it.",
         "Concentrate and ask again."
+    ],
+    "cmdList":
+    [
+        "8ball",
+        "date",
+        "dm",
+        "flip",
+        "ping",
+        "rtd",
+        "rng",
+        "cheesequote",
+        "whois",
+        "info"
+    ],
+    "oCmdList":
+    [
+        "say",
+        "reset"
     ]
 }

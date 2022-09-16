@@ -25,24 +25,6 @@ for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	bot.commands.set(command.name, command);
 }
-const cmdList =
-[
-	"8ball",
-	"date",
-	"dm",
-	"flip",
-	"ping",
-	"rtd",
-	"rng",
-	"cheesequote",
-	"whois",
-	"info"
-]
-const oCmdList =
-[
-	"say",
-	"reset"
-]
 
 bot.on('ready', () =>
 {
@@ -95,13 +77,13 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 			msg.reply({content: "Here are the commands!", embeds: [help1] });
 			break;
 		default:
-			if (cmdList.includes(command))
+			if (config.cmdList.includes(command))
 			{
 				if (config.debug)
 						console.debug(msg.author.username + ' Triggerd Command ' + command);
 				bot.commands.get(command).execute(msg, args, config, Client, EmbedBuilder);
 			}
-			else if (oCmdList.includes(command) && msg.author.id == "425380284192653315")
+			else if (config.oCmdList.includes(command) && msg.author.id == "425380284192653315")
 			{
 				if (config.debug)
 						console.debug(msg.author.username + ' Triggerd Command ' + command);
@@ -122,8 +104,8 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 if (config.debug) // Funky debug shid
 {
 	console.warn("DEBUG MODE IS ON!")
-	console.debug(`Commands: ${cmdList}`);
-	console.debug(`Owner Commands: ${oCmdList}`)
+	console.debug(`Commands: ${config.cmdList}`);
+	console.debug(`Owner Commands: ${config.oCmdList}`)
 	console.debug(`Token: ${token}`); // Token in console
 }
 

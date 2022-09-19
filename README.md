@@ -10,6 +10,7 @@
 ## Roadmap
 
 - All of the commands ported over from [**Discord.JS**](https://discord.js.org) v11/v12 to v14
+  - maybe only some lol
 
 - Any extra commands that I *or others* find necessary
 ## Authors

@@ -71,7 +71,8 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 					{ name: 'Say', value: `*${bot.commands.get("say").description}*` },
 					{ name: 'WhoIs', value: `*${bot.commands.get("whois").description}*` },
 					{ name: 'Reset', value: `*${bot.commands.get("reset").description}*` },
-					{ name: 'Info', value: `*${bot.commands.get("info").description}*` }
+					{ name: 'Info', value: `*${bot.commands.get("info").description}*` },
+					{ name: 'Watermelon', value: `*${bot.commands.get("watermelon").description}*` }
 				)
 				.setTimestamp()
 			msg.reply({content: "Here are the commands!", embeds: [help1] });

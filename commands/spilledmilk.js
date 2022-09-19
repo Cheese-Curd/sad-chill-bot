@@ -1,6 +1,6 @@
 module.exports = {
     "name": "watermelon",
-    "description": "haha, spilled milk go brrrrrrrrr",
+    "description": "haha, spilled milk go brrrrrrrrrr",
     execute(msg, args, config) {
         if (config.debug)
             console.debug(`${msg.author.username} did funky milk :)`)

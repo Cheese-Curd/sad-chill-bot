@@ -78,6 +78,8 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 			msg.reply({content: "Here are the commands!", embeds: [help1] });
 			break;
 		default:
+			if (command == "")
+				msg.channel.send({ content: "what the fuck is that" files: ['https://cdn.discordapp.com/attachments/600730403103309845/720471916842057739/alien-holding-dollar-sign-illustration-vector-on-white-backgro-209842786.png']} )
 			if (config.cmdList.includes(command))
 			{
 				if (config.debug)

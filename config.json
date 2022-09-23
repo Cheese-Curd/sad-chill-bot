@@ -1,5 +1,6 @@
 {
     "debug": true,
+    "dmHelp": true,
 
     "prefix": "$",
     "ball":

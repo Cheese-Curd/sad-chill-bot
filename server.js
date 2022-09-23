@@ -42,7 +42,7 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 		switch (command)
 		{ // mostly just WIP exceptions.
 		case "dm":
-			bot.commands.get("wip").execute(msg, args);
+			bot.commands.get("wip").execute(msg, args, config, bot);
 			break;
 		case "info":
 			bot.commands.get("wip").execute(msg, args, config);
@@ -79,7 +79,7 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 			break;
 		default:
 			if (command == "")
-				msg.channel.send({ content: "what the fuck is that" files: ['https://cdn.discordapp.com/attachments/600730403103309845/720471916842057739/alien-holding-dollar-sign-illustration-vector-on-white-backgro-209842786.png']} )
+				msg.channel.send({ content: "what the fuck is that", files: ['https://cdn.discordapp.com/attachments/600730403103309845/720471916842057739/alien-holding-dollar-sign-illustration-vector-on-white-backgro-209842786.png']} )
 			if (config.cmdList.includes(command))
 			{
 				if (config.debug)

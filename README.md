@@ -1,4 +1,4 @@
-[![Issues](https://img.shields.io/github/issues/cheese-curd/sad-chill-bot?color=FF0098)](https://www.github.com/cheese-curd/sad-chill-bot/issues)
+[![Code Bad](https://img.shields.io/badge/Code-terrible-FF33F6?style=flat&logo=appveyor)]()
 [![Pull Requests](https://img.shields.io/github/issues-pr/cheese-curd/sad-chill-bot?color=FF0098)](https://github.com/cheese-curd/sad-chill-bot/pulls)
 # Sad Chill Bot
 

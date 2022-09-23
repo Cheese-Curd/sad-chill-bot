@@ -14,7 +14,11 @@ const bot = new Discord.Client(
 		GatewayIntentBits.GuildMessages,
 		GatewayIntentBits.MessageContent,
 		GatewayIntentBits.GuildMembers,
+		GatewayIntentBits.DirectMessages,
 	],
+    partials: [
+        'CHANNEL', // Required to receive DMs
+    ],
 });
 const fs = require('fs');
 const config = require("./config.json");
@@ -29,7 +33,7 @@ for (const file of commandFiles) {
 bot.on('ready', () =>
 {
 	console.log(`Process started, no errors so far`);
-	bot.user.setActivity('Eliana code me.', { type: ActivityType.Watching });
+	bot.user.setActivity('for $help', { type: ActivityType.Watching });
 });
 
 bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it originally
@@ -75,7 +79,14 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 					{ name: 'Watermelon', value: `*${bot.commands.get("watermelon").description}*` }
 				)
 				.setTimestamp()
-			msg.reply({content: "Here are the commands!", embeds: [help1] });
+			if (config.dmHelp && msg.channel.guild)
+			{
+				if (config.debug)
+					console.warn('config.dmHelp = true!')
+				msg.author.send({content: `<@${msg.author.id}>, Here are the commands!`, embeds: [help1]}) // old reply :)))))))))
+			} else {
+				msg.reply({content: "Here are the commands!", embeds: [help1]});
+			}
 			break;
 		default:
 			if (command == "")

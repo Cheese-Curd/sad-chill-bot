@@ -1,11 +1,12 @@
 module.exports = {
     "name": "dm",
     "description": "Direct message someone as the bot!",
-    execute(msg, args, config) {
+    execute(msg, args, config, client) {
         const dmusr = msg.mentions.users.first();
         if (!msg.guild) {
             msg.author.send(`bro you're not in a server lmao`)
         } else {
+            list = client.guilds.cache.get(''); // how tf do I get the GuildID if I need to grab the guild??????????????
             list.members.fetch().then(m => {
                 let members = m.map(u => u.user.username)
                 if (u.user.username == dmusr.username)

@@ -7,7 +7,7 @@ module.exports = {
         try
         {
           msg.delete();
-        } catch(e)
+        } catch(e) // this no do anything :c
         {
           console.error(e);
         }

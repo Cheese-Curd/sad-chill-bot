@@ -1,5 +1,5 @@
 [![Code Bad](https://img.shields.io/badge/Code-terrible-FF33F6?style=flat&logo=appveyor)]()
-![GitHub issues](https://img.shields.io/github/issues-raw/cheese-curd/sad-chill-bot?color=FF33F6?style=flat&logo=appveyor)
+[![GitHub issues](https://img.shields.io/github/issues-raw/cheese-curd/sad-chill-bot?color=FF33F6?style=flat&logo=appveyor)](https://github.com/cheese-curd/sad-chill-bot/issues)
 [![Pull Requests](https://img.shields.io/github/issues-pr/cheese-curd/sad-chill-bot?color=FF33F6?style=flat&logo=appveyor)](https://github.com/cheese-curd/sad-chill-bot/pulls)
 # Sad Chill Bot
 

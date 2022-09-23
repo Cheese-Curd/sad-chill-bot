@@ -1,0 +1,11 @@
+-- General Settings --
+debug: Output debugging information.
+dmHelp: Instead of repling to the message, DM the user so they can use commands inside of the bots DMs
+
+-- Command Settings --
+prefix: obvious, bot command prefix
+cmdList: Command list, when you add a normal command write the name here so the bot knows it exists
+oCmdList: Command list, but owner only commands.
+
+-- Command Specific --
+ball: All of the responces of the 8ball command

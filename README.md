@@ -1,5 +1,5 @@
 [![Code Bad](https://img.shields.io/badge/Code-terrible-FF33F6?style=flat&logo=appveyor)]()
-[![Pull Requests](https://img.shields.io/github/issues-pr/cheese-curd/sad-chill-bot?color=FF0098)](https://github.com/cheese-curd/sad-chill-bot/pulls)
+[![Pull Requests](https://img.shields.io/github/issues-pr/cheese-curd/sad-chill-bot?color=FF33F6?style=flat&logo=appveyor)](https://github.com/cheese-curd/sad-chill-bot/pulls)
 # Sad Chill Bot
 
 ##### **Old:** *Sad Chill Bot (SCB) is a bot I made for one Discord server, it was originaly supposed to be a joke bot it is now a joke and moderator bot.*

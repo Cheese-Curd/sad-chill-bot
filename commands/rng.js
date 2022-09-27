@@ -1,6 +1,6 @@
 module.exports = {
     "name": "rng",
-    "description": "Random number generator `formated $rng <min> <max>`",
+    "description": "Random number generator `formatted $rng <min> <max>`",
     execute(message, args, config) {
         var max = parseInt(args[1]) // I used var, cry
         var min = parseInt(args[0])

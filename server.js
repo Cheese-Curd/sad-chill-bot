@@ -113,7 +113,7 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 					commandusedrecent.add(msg.author.id)
 					setTimeout(() => {
 						commandusedrecent.delete(message.author.id)
-					}, 180000); // 3 minutes \\
+					}, 5000); // 5 seconds \\
 				}
 			}
 			else if (config.oCmdList.includes(command) && msg.author.id == "425380284192653315")

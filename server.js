@@ -20,6 +20,7 @@ const bot = new Discord.Client(
         'CHANNEL', // Required to receive DMs
     ],
 });
+const commandusedrecent = new Set() // I hate this job - SCB 2021?
 const fs = require('fs');
 const config = require("./config.json");
 const token = fs.readFileSync('token.txt').toString().trim(); // Makes everyones life easier when putting this bot on GitHub ♥ | .trim() {thanks Angel/Chimera! ♥} fixes basic user errors and FS errors.
@@ -57,6 +58,16 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 		case "reset":
 			if (msg.author.id == "425380284192653315")
 				bot.commands.get("wip").execute(msg, args, bot)
+		case "creeper":
+			if (commandusedrecent.has(msg.author.id)) {
+					message.reply(`Sorry, I can't do that at the moment. Don't you spamming the chat! ~~I hate this job..~~`)
+				} else {
+					bot.commands.get('creeper').execute(message, args);
+					commandusedrecent.add(message.author.id)
+					setTimeout(() => {
+						commandusedrecent.delete(message.author.id)
+					}, 180000); // 3 minutes \\
+				}
 		case "help": // WHY IS IT STUPID AAAAAAAAA-
 			const help1 = new EmbedBuilder()
 				.setColor(0xff00dd)
@@ -95,7 +106,15 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 			{
 				if (config.debug)
 						console.debug(msg.author.username + ' Triggerd Command ' + command);
-				bot.commands.get(command).execute(msg, args, config, Client, EmbedBuilder);
+				if(commandusedrecent.has(msg.author.id)
+				   msg.reply(`Sorry, can't let you spam commands!`)
+				else {
+					bot.commands.get(command).execute(msg, args, config, Client, EmbedBuilder);
+					commandusedrecent.add(msg.author.id)
+					setTimeout(() => {
+						commandusedrecent.delete(message.author.id)
+					}, 180000); // 3 minutes \\
+				}
 			}
 			else if (config.oCmdList.includes(command) && msg.author.id == "425380284192653315")
 			{

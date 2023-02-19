@@ -106,7 +106,7 @@ bot.on('messageCreate', msg => // holy shit this was so bad back when I wrote it
 			{
 				if (config.debug)
 						console.debug(msg.author.username + ' Triggerd Command ' + command);
-				if(commandusedrecent.has(msg.author.id)
+				if(commandusedrecent.has(msg.author.id))
 				   msg.reply(`Sorry, can't let you spam commands!`)
 				else {
 					bot.commands.get(command).execute(msg, args, config, Client, EmbedBuilder);

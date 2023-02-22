@@ -9,3 +9,4 @@ oCmdList: Command list, but owner only commands.
 
 -- Command Specific --
 ball: All of the responces of the 8ball command
+cheesequote: All the quotes for the uh "motivational" quotes

@@ -1,7 +1,7 @@
 {
     "debug": true,
     "dmHelp": true,
-    "version": "0.0.3",
+    "version": "0.0.7 - The Command Port Update",
 
     "prefix": "$",
     "ball":
@@ -27,26 +27,81 @@
         "You may rely on it.",
         "Concentrate and ask again."
     ],
+    "quotes":
+    [
+        {
+            "quote": "You can't make everyone happy. You're not cheese.",
+            "author": "Anonymous"
+        },
+        {
+            "quote": "I just don't see the point of not eating cheese. I mean, if God didn't want us to eat cheese, would he have let man invent it?",
+            "author": "Lisa Samson"
+        },
+        {
+            "quote": "How can you govern a country which has 246 varieties of cheese?",
+            "author": "Charles de Gaulle"
+        },
+        {
+            "quote": "What happens to the hole when the cheese is gone?",
+            "author": "Bertolt Brecht"
+        },
+        {
+            "quote": "Give me a good sharp knife and a good sharp cheese and I'm a happy man.",
+            "author": "George R.R. Martin"
+        },
+        {
+            "quote": "You have to be a romantic to invest yourself, your money, and your time in cheese.",
+            "author": "Anthony Bourdain"
+        },
+        {
+            "quote": "Life is great. Cheese makes it better.",
+            "author": "Avery Aames"
+        },
+        {
+            "quote": "Dessert without cheese is like a beauty with only one eye",
+            "author": "Jean Anthelme Brillat-Savarin"
+        },
+        {
+            "quote": "Age is of no importance unless you're a cheese.",
+            "author": "Billie Burke"
+        },
+        {
+            "quote": "Myself, I couldn't help think of anything in the world better than stirring sharp white Cheddar, smoked Gouda, creamy Havarti, Monterey Jack, and a touch of piquant Maytag blue cheese into a bubbling hot white sauce, stirring it to a thick honey consistency, and pouring it over al dente macaroni to toast to a crispy deep golden on top.",
+            "author": "Beth Harbison, When in Doubt, Add Butter"
+        },
+        {
+            "quote": "A silence fell at the mention of Gavard. They all looked at each other cautiously. As they were all rather short of breath by this time, it was the Camembert they could smell. This cheese, with its gamy odour, had overpowered the milder smells of the Marolles and the Limbourg; its power was remarkable. Every now and then, however, a slight whiff, a flute-like note, came from the Parmesan, while the Bries came into play with their soft, musty smell, the gentle sound, so to speak, of a damp tambourine. The Livarot launched into an overwhelming reprise, and the Géromé kept up the symphony with a sustained high note.",
+            "author": "Émile Zola, The Belly of Paris"
+        },
+        {
+            "quote": "When the waiter brought the cheese-board, there was a large carrot carved in the shape of a mermaid sitting between the Dolcelatte and the Pecorino. Teo could have sworn that the carrot-mermaid flexed her tail and plunged her little hand inside a smelly Gorgonzola. 'Tyromancy, ye know,' remarked the mermaid. 'The Ancient Art of Divination by Cheese.' Then she pulled her tiny hand out and inspected the green cheese-mold on her tiny fingers. 'Lackaday!' she moaned. 'Stinking! It goes poorly for Venice and Teodora, it do!",
+            "author": "Michelle Lovric, The Undrowned Child"
+        },
+        {
+            "quote": "She slapped a few slices of bacon on the heated griddle. Sizzling started immediately and the scent of rising coconut cake mingled with the smoky salt of bacon. “Heaven.” She buttered day-old baguettes to toast, then cracked a few eggs for breakfast sandwiches. “Now some cheese. Brie? Emmental? Mmm, smoky onion Cheddar.",
+            "author": "Amy E. Reichert, The Coincidence of Coconut Cake"
+        }
+    ],
+
     "cmdList":
     [
-        "8ball",
-        "date",
-        "dm",
-        "flip",
         "ping",
-        "rtd",
-        "rng",
+        "date",
+        "8ball",
+        "checkping",
+        "flip",
         "cheesequote",
         "whois",
-        "info",
-        "watermelon",
-        "spilledmilk",
-        "cbt",
-        "creeper"
+        "rtd"
     ],
     "oCmdList":
     [
-        "say",
-        "reset"
+        "say"
+    ],
+
+    "whitelist":
+    [
+        "425380284192653315",
+        "176073401184681984"
     ]
 }

@@ -2,9 +2,12 @@ const Eris = require("eris");
 const Guild = require("eris");
 const fs = require("fs")
 
-const { processCMD, log } = require("./util.js");
+const { processCMD, processSlashCMD, log } = require("./util.js");
 const config = require("./config.json")
 const token = fs.readFileSync('token.txt').toString().trim(); // Makes everyones life easier when putting this bot on GitHub ♥ | .trim() {thanks Angel/Chimera! ♥} fixes basic user errors and FS errors.
+
+const EPHEMERAL_FLAG = 64; // fucking stupid -angel
+const EPHEMERAL_CMDs = ["say"];
 
 // lol, thanks @type. I have suggestions now
 /**
@@ -23,7 +26,7 @@ bot.on("ready", () => { // When the bot is ready
     createSlashCMD("ping", "A basic test command that pretty much everyone uses.");
     createSlashCMD("flip", "'Hey Google, flip a coin.'");
     createSlashCMD("cheesequote", "Get a motivational cheese quote. Okay maybe not motivational.");
-    createSlashCMD("8ball", "What will the magical 8ball say?",
+    createSlashCMD("8ball", "What will the magical 8ball say?", true,
     [
         {
             name: "question",
@@ -32,7 +35,7 @@ bot.on("ready", () => { // When the bot is ready
             required: true
         }
     ]);
-    createSlashCMD("rtd", "Just like the good 'ol TF2 times! Except it's just a normal die.",
+    createSlashCMD("rtd", "Just like the good 'ol TF2 times! Except it's just a normal die.", true
     [
         {
             name: "max",
@@ -41,12 +44,21 @@ bot.on("ready", () => { // When the bot is ready
             required: false
         }
     ]);
-    createSlashCMD("say", "Force SCB to say whatever you want her to say [Owner Only]",
+    createSlashCMD("say", "Force SCB to say whatever you want her to say [Owner Only]", false,
     [
         {
             name: "message",
             description: "The message that will be sent.",
             type: 3,
+            required: true
+        }
+    ]);
+    createSlashCMD("whois", "Grab some data about someone, such as their ID or Discriminator (the numbers after the #)", false,
+    [
+        {
+            name: "user",
+            description: "The user you want information on",
+            type: 6,
             required: true
         }
     ]);
@@ -63,43 +75,47 @@ bot.on("interactionCreate", interaction => {
     {
         try // Catch any errors
         {
+            argArray = [];
+            if (interaction.data.options)                       // fuck
+                for (wtf of interaction.data.options.values())  // never
+                    argArray.push(wtf.value);                   // nesters
             if (config.oCmdList.includes(interaction.data.name))
             {
-                // if (config.whitelist.includes(interaction.member.user.id)) // TODO: Fix this!
-                // {
-                //     // // interaction.createMessage("_ _")
-                //     // log(1, interaction.data.options.values)
-                //     // bot.createMessage(interaction.channel.id, processCMD(interaction.data.name, Array.from(interaction.data.options.values)))
-
-                //     interaction.createMessage("I'm sorry, slash commands are in a **HEAVY** work in progress right now!")
-                // }
-                // else
-                // {
-                //     if (config.debug)
-                //     {
-                //         log(1, `Channel Object: ${interaction.channel} Channel ID: ${interaction.channel.id}`)
-                //         // log(1, `Interaction Options: ${interaction.data.options.values("WHAT DO I PUT IN  YOU")}`)
-                //         log(1, `Interaction User: ${interaction.member.user.id}`)
-                //     }
-                //     bot.createMessage(interaction.channel.id, "I'm sorry, you don't meet the requirements to run this command!")
-                // }
-                interaction.createMessage("I'm sorry, slash commands are in a **HEAVY** work in progress right now!")
+                if (config.whitelist.includes(interaction.member.user.id)) // TODO: Fix this!
+                {
+                    if (EPHEMERAL_CMDs.includes(interaction.data.name))
+                    {
+                        interaction.createMessage({content:"Okay!", flags:EPHEMERAL_FLAG})
+                        bot.createMessage(interaction.channel.id, processCMD(interaction.data.name, argArray, true, Guild))
+                    }
+                    else
+                        interaction.createMessage(processSlashCMD(interaction.data.name, argArray, interaction, Guild))
+                }
+                else
+                {
+                    if (config.debug)
+                    {
+                        log(4, `Channel Object: ${interaction.channel} Channel ID: ${interaction.channel.id}`)
+                        log(4, `Interaction Args: ${argArray}`)
+                        log(4, `Interaction User: ${interaction.member.user.id}`)
+                    }
+                }
             }
             else
             {
-                interaction.createMessage(processCMD(interaction.data.name, {}))
+                interaction.createMessage(processSlashCMD(interaction.data.name, argArray, interaction, Guild))
             }
         }
         catch(error)
         {
             if (config.debug)
             {
-                // log(1, `Channel Object: ${interaction.channel} Channel ID: ${interaction.channel.id}`)
-                // log(1, `Interaction Options: ${interaction.data.options.values("WHAT DO I PUT IN  YOU")}`)
-                // log(1, `Interaction User: ${interaction.member.user.id}`)
+                log(4, `Channel Object: ${interaction.channel} Channel ID: ${interaction.channel.id}`)
+                log(4, `Interaction Args: ${argArray}`)
+                // log(4, `Interaction User: ${interaction.member.user.id}`)
             }
             interaction.createMessage(`Uh Oh! An error has occured! Here's the error to send to the bot owner!\n**\`${error}\`**`)
-            log(3, `Uh Oh! An error has occured!\n${error}`)
+            log(3, `Uh Oh! An error has occured!\n${error.stack}`)
         }
     }
 })
@@ -112,8 +128,6 @@ bot.on('messageCreate', msg =>
 		const command = args.shift().toLowerCase(); 
 
         bot.sendChannelTyping(msg.channel.id)
-        if (config.debug)
-            log(4, `${msg.author.username} requested the $${command} command.`)
         setTimeout(() => {
             if (command == "")
                 bot.createMessage(msg.channel.id, "what the fuck is that", [ { name: "mony.png", file: fs.readFileSync('./images/mony.png') } ]); // "funny" secret, I guess
@@ -124,7 +138,7 @@ bot.on('messageCreate', msg =>
                         bot.editMessage(msg.channel.id, message.id, `Your ping is \`${ping}ms\`.`)
                     })
                 else
-                    bot.createMessage(msg.channel.id, processCMD(command, args, msg)) // jesus christ, this is so easy
+                    bot.createMessage(msg.channel.id, processCMD(command, args, false, Guild, msg)) // jesus christ, this is so easy
         }, 300);
 	}
 });
@@ -140,25 +154,15 @@ if (config.debug) // Funky debug shid
 	log(4, `Token: ${token}`); // Token in console
 }
 
-function createSlashCMD(name, desc, options)
+function createSlashCMD(name, desc, dm = true, options = {})
 {
-    if (options != null)
-    {
-        bot.createCommand({
-            name: name,
-            type: Eris.Constants.ApplicationCommandTypes.CHAT_INPUT,
-            description: desc,
-            options: options
-        });
-    }
-    else
-    {
-        bot.createCommand({
-            name: name,
-            type: Eris.Constants.ApplicationCommandTypes.CHAT_INPUT,
-            description: desc
-        });
-    }
+    bot.createCommand({
+        name: name,
+        type: Eris.Constants.ApplicationCommandTypes.CHAT_INPUT, // Slash commands are chat input interactions
+        description: desc,
+        dm_permission: dm,
+        options: options
+    });
 }
 
 bot.connect(); // Get the bot to connect to Discord

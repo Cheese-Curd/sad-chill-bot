@@ -1,7 +1,15 @@
 const config = require("./config.json")
 
-function processCMD(cmd, args, msg)
+function processCMD(cmd, args, slash, guild, msg)
 {
+    if (!slash)
+    {
+        if (args != undefined && args.length > 0)
+            log(1, `${msg.author.username}#${msg.author.discriminator} ran the command $${cmd} with the argument(s) { ${args.join(", ")} }`)
+        else
+            log(1, `${msg.author.username}#${msg.author.discriminator} ran the command $${cmd}`)
+    }
+
     switch (cmd)
     {
         case "ping":
@@ -83,34 +91,42 @@ function processCMD(cmd, args, msg)
 
             return `**“${quote["quote"]}”**\n- ${quote["author"]}`
         case "whois":
-            if (msg.mentions[0] != null)
+            var mbr = null
+            if (!slash)
             {
-                if (config.debug)
-                {
-                    log(4, `Username: ${msg.mentions[0].username}`)
-                    log(4, `Discriminator: ${msg.mentions[0].discriminator}`)
-                    log(4, `ID: ${msg.mentions[0].id}`)
-                    log(4, `Bot?: ${msg.mentions[0].bot ? "Yes" : "No"}`)
-                }
-                const whois =
-                {
-                    title: `Who is this user?`,
-                    description: "Let's find out!",
-                    timestamp: new Date(),
-                    color: 0xFF33D1,
-                    fields: [
-                        { name: "Username", value: msg.mentions[0].username, inline: false },
-                        { name: "Discriminator", value: msg.mentions[0].discriminator, inline: false },
-                        { name: "ID", value: msg.mentions[0].id, inline: false },
-                        { name: "Bot?", value: msg.mentions[0].bot ? "Yes" : "No", inline: false }
-                    ]
-                }
-                return { embed: whois }
+                if (msg.mentions[0] != null)
+                    mbr = msg.mentions[0]
+                else
+                    return "Please ping a user for this to work!"
             }
             else
             {
-                return "Please ping a user for this to work!"
+                if(args[0])
+                    mbr = guild.fetchMembers(args[0])
+                else
+                    return "Please ping a user for this to work!"
             }
+            if (config.debug)
+            {
+                log(4, `Username: ${mbr.username}`)
+                log(4, `Discriminator: ${mbr.discriminator}`)
+                log(4, `ID: ${mbr.id}`)
+                log(4, `Bot?: ${mbr.bot ? "Yes" : "No"}`)
+            }
+            const whois =
+            {
+                title: `Who is this user?`,
+                description: "Let's find out!",
+                timestamp: new Date(),
+                color: 0xFF33D1,
+                fields: [
+                    { name: "Username", value: mbr.username, inline: false },
+                    { name: "Discriminator", value: mbr.discriminator, inline: false },
+                    { name: "ID", value: mbr.id, inline: false },
+                    { name: "Bot?", value: mbr.bot ? "Yes" : "No", inline: false }
+                ]
+            }
+            return { content: "_ _", embed: whois }
         case "rtd":
             var max = 6
             if (args[0] != undefined)
@@ -141,19 +157,50 @@ function processCMD(cmd, args, msg)
     }
 }
 
-function log(type, data)
+function processSlashCMD(cmd, args, interaction, guild)
+{
+    if (args != undefined && args.length > 0)
+        log(1, `${interaction.user.username}#${interaction.user.discriminator} ran the command $${cmd} with the argument(s) { ${args.join(", ")} }`)
+    else
+        log(1, `${interaction.user.username}#${interaction.user.discriminator} ran the command $${cmd}`)
+
+    switch (cmd)
+    {
+        case "8ball":
+        case "cheesequote":
+        case "flip":
+        case "ping":        // WHY
+            processCMD(cmd);
+            break;
+        case "rtd":
+        case "say":
+        case "whois":
+            processCMD(cmd, args, true, guild);
+            break;
+    }
+}
+
+
+function log(type = 0, data)
 {
     if (type == 1) // info
-        console.log(`[INFO] ${data}`)
+        console.log(`${logDate()} | [INFO] ${data}`)
     else if (type == 2) // warn
-        console.warn(`[WARNING] ${data}`)
+        console.warn(`${logDate()} | [WARNING] ${data}`)
     else if (type == 3) // error
-        console.error(`[! ERROR !] ${data}`)
+        console.error(`${logDate()} | [! ERROR !] ${data}`)
     else if (type == 4) // debug
-        console.log(`[DEBUG] ${data}`)
+        console.log(`${logDate()} | [DEBUG] ${data}`)
     else
         console.log(data)
 }
 
-exports.processCMD = processCMD; // Processing Commands
-exports.log = log                // Logging output, gives me a bit more info for if it's an error, warning, or just general information
+function logDate() // god DAMN
+{
+    const date = new Date();
+    return `${date.toLocaleDateString(undefined, {month:"2-digit", day:"2-digit", year:"2-digit"})} ${date.toLocaleTimeString(undefined, {hour12:false, hour:"2-digit", minute:"2-digit"})}`
+}
+
+exports.processCMD = processCMD;            // Processing Commands
+exports.processSlashCMD = processSlashCMD;  // Processing Slash Commands
+exports.log = log                           // Logging output, gives me a bit more info for if it's an error, warning, or just general information

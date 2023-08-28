@@ -31,40 +31,22 @@ function processCMD(cmd, args, slash, guild, msg)
             // day calculator \\
             switch(m) { 
                 case '1':
+	    	case '3':
+	    	case '5':
+	    	case '7':
+	    	case '8':
+		case '10':
+		case '12':
                     ddn = 31
                     break;
-                case '2':
-                    ddn = 28
-                    break;
-                case '3':
-                    ddn = 31
-                    break;
-                case '4':
-                    ddn = 30
-                    break;
-                case '5':
-                    ddn = 31
-                    break;
+	    	case '4':
                 case '6':
-                    ddn = 30
-                    break;
-                case '7':
-                    ddn = 31
-                    break;
-                case '8':
-                    ddn = 31
-                    break;
                 case '9':
-                    ddn = 30
-                    break;
-                case '10':
-                    ddn = 31
-                    break;
                 case '11':
                     ddn = 30
                     break;
-                case '12':
-                    ddn = 31
+                case '2':
+                    ddn = 28
                     break;
             }
             const dd = Math.floor(Math.random() * (ddn - 1 + 1)) + 1;

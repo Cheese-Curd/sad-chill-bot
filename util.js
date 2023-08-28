@@ -28,7 +28,7 @@ function processCMD(cmd, args, slash, guild, msg)
             const month = Math.floor(Math.random() * (monthNumb - 1 + 1)) + 1;
             
             // day calculator \\
-            switch(m)
+            switch(month)
 	    {
 	    	case '4':
                 case '6':

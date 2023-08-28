@@ -17,16 +17,15 @@ function processCMD(cmd, args, slash, guild, msg)
         case "8ball":
             return config.ball[Math.floor(Math.random() * (config.ball.length - 1)) + 1];
         case "date":
-            let ddn = 31;
+            let dayNumb = 31;
 		
             // year calculator \\
-            const yym = 1970
-            const yyma = new Date().getFullYear()
-            const yy = Math.floor(Math.random() * (yyma - yym + 1)) + yym
+            const yearMax = new Date().getFullYear()
+            const year = Math.floor(Math.random() * (yearMax - 1970 + 1)) + yym
             
             // month calculator \\
-            const mn = 12;
-            const m = Math.floor(Math.random() * (mn - 1 + 1)) + 1;
+            const monthNumb = 12;
+            const month = Math.floor(Math.random() * (monthNumb - 1 + 1)) + 1;
             
             // day calculator \\
             switch(m)
@@ -35,14 +34,14 @@ function processCMD(cmd, args, slash, guild, msg)
                 case '6':
                 case '9':
                 case '11':
-                    ddn = 30
+                    dayNumb = 30
                     break;
                 case '2':
-                    ddn = 28
+                    dayNumb = 28
                     break;
             }
-            const dd = Math.floor(Math.random() * (ddn - 1 + 1)) + 1;
-            return `Your generated date is ${m}/${dd}/${yy}`;
+            const day = Math.floor(Math.random() * (dayNumb - 1 + 1)) + 1;
+            return `Your generated date is ${month}/${day}/${year}`;
         case "say":
             if (args.length < 1)
                 return "Make sure to add text before you send that command!"

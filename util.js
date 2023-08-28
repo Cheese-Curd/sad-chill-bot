@@ -29,16 +29,8 @@ function processCMD(cmd, args, slash, guild, msg)
             const m = Math.floor(Math.random() * (mn - 1 + 1)) + 1;
             
             // day calculator \\
-            switch(m) { 
-                case '1':
-	    	case '3':
-	    	case '5':
-	    	case '7':
-	    	case '8':
-		case '10':
-		case '12':
-                    ddn = 31
-                    break;
+            switch(m)
+	    {
 	    	case '4':
                 case '6':
                 case '9':

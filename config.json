@@ -92,7 +92,8 @@
         "flip",
         "cheesequote",
         "whois",
-        "rtd"
+        "rtd",
+		"action"
     ],
     "oCmdList":
     [

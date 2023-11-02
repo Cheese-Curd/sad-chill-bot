@@ -120,6 +120,21 @@ function processCMD(cmd, args, slash, guild, msg)
             else
                 max = 6
             return `*You rolled a D${max}*\nYou landed on ${Math.floor(Math.random() * (max - 1 + 1)) + 1}`
+		case "action": // https://github.com/Cheese-Curd/sad-chill-bot/blob/SourceCode-OLD/commands/action.js | TODO: Finish
+			if (args[0] != undefined)
+			{
+				switch (args[0])
+				{
+					case "hug":
+						return `Hey, <@${msg.author.id}>, this is a test!`
+						// return `This is a test, nothing will happened right now.`
+					case "help":
+						return `This is a help dialogue.`
+				}
+				break;
+			}
+			else
+				return `Don't forget to add the \`Action\`!`
         default:
             if (config.debug)
                 log(4, cmd)

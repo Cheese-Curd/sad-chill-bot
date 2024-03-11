@@ -21,7 +21,7 @@ function processCMD(cmd, args, slash, guild, msg)
 		
             // year calculator \\
             const yearMax = new Date().getFullYear()
-            const year = Math.floor(Math.random() * (yearMax - 1970 + 1)) + yym
+            const year = Math.floor(Math.random() * (yearMax - 1970 + 1)) + 1970
             
             // month calculator \\
             const monthNumb = 12;
@@ -29,7 +29,7 @@ function processCMD(cmd, args, slash, guild, msg)
             
             // day calculator \\
             switch(month)
-	    {
+	    	{
 	    	case '4':
                 case '6':
                 case '9':
@@ -41,7 +41,7 @@ function processCMD(cmd, args, slash, guild, msg)
                     break;
             }
             const day = Math.floor(Math.random() * (dayNumb - 1 + 1)) + 1;
-            return `Your generated date is ${month}/${day}/${year}`;
+            return `Your generated date is \`${month}/${day}/${year}\``;
         case "say":
             if (args.length < 1)
                 return "Make sure to add text before you send that command!"
